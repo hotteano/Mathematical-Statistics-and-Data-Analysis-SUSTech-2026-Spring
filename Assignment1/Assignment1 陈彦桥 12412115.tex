@@ -1,0 +1,135 @@
+\documentclass[a4paper, UTF-8]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\theoremstyle{plain}
+\newtheorem{theorem}{\indent Theorem}[section]
+\newtheorem{lemma}[theorem]{\indent Lemma}
+\newtheorem{assumption}{\indent Assumption}[section]
+\newtheorem{note}[theorem]{\indent Notation}
+\newtheorem{proposition}[theorem]{\indent Proposition}
+\newtheorem{corollary}[theorem]{\indent Corollary}
+\newtheorem{definition}{\indent Definition}[section]
+\newtheorem{example}{\indent Example}[section]
+\newtheorem{remark}{\indent Remark}[section]
+\newenvironment{solution}{\begin{proof}[\indent\bf Solution]}{\end{proof}}
+\renewcommand{\proofname}{\indent\bf Proof}
+
+\begin{document}
+
+\title{Assignment 1}
+
+\author{Yanqiao Chen\\ 
+  Department of Computer Science and Engineering\\
+  Southern University of Science and Technology\\
+  \texttt{12412115@mail.sustech.edu.cn}
+  }
+
+
+\maketitle
+
+\section{Page 27, Problem 2}
+
+\subsection{a}
+
+\begin{align*}
+\Omega = &\{(1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (2,1), (2,2), (2,3), (2,4), (2,5),(2,6),\\ 
+         & (3,1), (3,2), (3,3), (3,4), (3,5), (3,6), (4,1), (4,2), (4,3), (4,4), (4,5), (4,6),\\ 
+         & (5,1), (5,2), (5,3), (5,4), (5,5), (5,6), (6,1), (6,2), (6,3), (6,4), (6,5), (6,6)\}
+\end{align*}
+
+\subsection{b}
+
+\begin{enumerate}
+  \item \begin{align*}A = &\{(1,4), (1,5), (1,6), (2,3), (2,4), (2,5), (2,6), (3,4), (3,5), (3,6), (4, 1), (4, 2), (4, 3), (4,4), (4,5),\\ & (4,6), (5, 1), (5, 2), (5, 3), (5,4), (5,5), (5,6), (6, 1), (6, 2), (6, 3), (6,4), (6,5), (6,6)\} \end{align*}
+  \item $B = \{(2,1), (3,2), (3,1), (4,3), (4,2), (4,1), (5,4), (5,3), (5,2), (5,1), (6,5), (6,4), (6,3), (6,2), (6,1)\}$
+  \item $C = \{(4,1), (4,2), (4,3), (4,4), (4,5), (4,6)\}$
+\end{enumerate}
+
+
+\subsection{c}
+\begin{enumerate}
+  \item  $A\cap C = \{(4,4), (4,5), (4,6), (4,1), (4,2), (4,3)\}$
+  \item \begin{align*}B \cup C = &\{(2,1), (3,2), (3,1), (4,3), (4,2), (4,1), (5,4), (5,3), (5,2), (5,1), (6,5), (6,4), (6,3), (6,2),\\ & (6,1), (4,4), (4,5), (4,6)\}\end{align*}
+  \item \begin{align*}A \cap (B\cup C) = &\{(3,2), (4,1), (4,2), (4,3), (4,4), (4,5), (4,6), (5,1), (5,2), (5,3), (5,4), (6,1),\\ & (6,2), (6,3), (6,4), (6,5)\}\end{align*}
+\end{enumerate}
+
+\section{Page 27, Problem 5}
+
+$$
+C = (A \cup B) \cap (A \cap B)^c
+$$
+
+\section{Supplementary Problem 1}
+
+$$
+\overline{A \cup B} = \overline{A} \cap \overline{B} = A \cap B
+$$
+
+Then 
+$$
+\overline{A \cup B} = A \cap B
+$$
+
+Since
+$$
+\overline{A \cup B} \subseteq \overline{A}
+$$
+and
+$$
+A \cap B \subseteq A
+$$
+and
+$$
+ A\cap \overline{A} = \emptyset
+$$
+
+Then as the bigger set $A$ and $\overline{A}$ have no intersection, the smaller set $A \cap B$ and $\overline{A \cup B}$ also have no intersection. But they 
+are the same set, so they must be empty. Formally, $(A \cap B) \cap \overline{A \cup B} = (A \cap B) \cap (A \cap B) = \emptyset$, 
+we conclude that
+$$
+A \cap B = \emptyset
+$$
+and
+$$
+\overline{A \cup B} = \emptyset
+$$
+
+Thus 
+$$
+A \cup B = \Omega
+$$
+
+\section{Supplementary Problem 2}
+
+Let
+
+\begin{align*} 
+  & B_1 = A_1 \\
+  & B_2 = A_2 \cap A_1^c \\
+  & B_3 = A_3 \cap A_1^c \cap A_2^c \\
+  & \cdots \\
+  & B_n = A_n \cap \bigcap_{i=1}^{n-1} A_i^c
+\end{align*}
+
+Then we can verify that $B_i$'s are disjoint and $\bigcup_{i=1}^n A_i = \bigcup_{i=1}^n B_i$. So we have
+
+$$
+A_1 \cup A_2 \cup \cdots \cup A_n = B_1 \cup B_2 \cup \cdots \cup B_n
+$$
+
+\end{document}
