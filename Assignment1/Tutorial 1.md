@@ -37,6 +37,8 @@ $$
 \lim_{n\to \infty} f_n(x) = 0 \Leftrightarrow \bigcap_{k=1}^\infty \bigcup_{N=1}^\infty \bigcap_{n=N}^\infty \{x\in [0,1]: f_n(x) < \frac{1}{k}\}
 $$
 
+不使用$\bigcap_{\epsilon}$是因为我们要求可数交，而$\epsilon$是不可数的。
+
 ## Question 4
 
 > 证明 $\bigcup_{i=1}^n \bigcap_{j=1}^m A_{i,j} = \bigcap_{j=1}^m \bigcup_{i=1}^n A_{i,j}$
