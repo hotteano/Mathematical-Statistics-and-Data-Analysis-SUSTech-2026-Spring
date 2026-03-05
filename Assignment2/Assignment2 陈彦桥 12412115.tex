@@ -1,0 +1,173 @@
+\documentclass[a4paper, UTF-8]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\theoremstyle{plain}
+\newtheorem{theorem}{\indent Theorem}[section]
+\newtheorem{lemma}[theorem]{\indent Lemma}
+\newtheorem{assumption}{\indent Assumption}[section]
+\newtheorem{note}[theorem]{\indent Notation}
+\newtheorem{proposition}[theorem]{\indent Proposition}
+\newtheorem{corollary}[theorem]{\indent Corollary}
+\newtheorem{definition}{\indent Definition}[section]
+\newtheorem{example}{\indent Example}[section]
+\newtheorem{remark}{\indent Remark}[section]
+\newenvironment{solution}{\begin{proof}[\indent\bf Solution]}{\end{proof}}
+\renewcommand{\proofname}{\indent\bf Proof}
+
+\begin{document}
+
+\title{Assignment 2}
+
+\author{Yanqiao Chen\\ 
+  Department of Computer Science and Engineering\\
+  Southern University of Science and Technology\\
+  \texttt{12412115@mail.sustech.edu.cn}
+  }
+
+
+\maketitle
+
+\section{Page 27, Problem 7}
+
+\begin{proof}
+From the formula $P(A\cup B) = P(A) + P(B) - P(AB)$ and $P(A \cup B) \leq 1$, we have:
+$$
+P(A) + P(B) - P(AB) \leq 1
+$$
+Rearranging the inequality, we get:
+$$
+P(AB) \geq P(A) + P(B) - 1
+$$
+This complete the whole proof. $\square$
+\end{proof}
+
+\section{Page 27, Problem 8}
+
+\begin{proof}
+
+We prove this by mathematical induction. 
+
+When $n=2$, we have:
+$$
+P(A_1 \cup A_2) = P(A_1) + P(A_2) - P(A_1 A_2) \leq P(A_1) + P(A_2)
+$$
+
+Assume that the inequality holds for $n=k$, that is:
+$$
+P\left(\bigcup_{i=1}^k A_i\right) \leq \sum_{i=1}^k P(A_i)
+$$
+
+Then for $n=k+1$, we have:
+
+\begin{align*}
+P\left(\bigcup_{i=1}^{k+1} A_i\right) &= P\left(\bigcup_{i=1}^k A_i \cup A_{k+1}\right) \\
+&= P\left(\bigcup_{i=1}^k A_i\right) + P(A_{k+1}) - P\left(\bigcup_{i=1}^k A_i A_{k+1}\right) \\
+& \leq \sum_{i=1}^k P(A_i) + P(A_{k+1}) = \sum_{i=1}^{k+1} P(A_i)
+\end{align*}
+
+From the principle of mathematical induction, for all $n$, the inequality holds.
+
+This complete the whole proof.$\square$
+\end{proof}
+
+\section{Supplementary Problem 1.1}
+
+The event "At least one of the events A,B,C happens" correspond to the set $A \cup B \cup C$.
+
+$$
+P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(AB) - P(AC) - P(BC) + P(ABC)
+$$
+And from $P(AB) = 0$ we derives $P(ABC) = P(AB \cap C) = 0$.
+
+Thus, we obtain:
+$$
+P(A \cup B \cup C) = \frac{3}{4} - 0 - 0 - \frac{1}{8} + 0 = \frac{5}{8}
+$$
+
+\section{Supplementary Problem 1.2}
+
+From the given information, we know that 
+$$
+P(AB) = P(\bar{A} \cap B) = P(\overline{A \cup B}) = 1 - P(A \cup B)
+$$
+
+From the formula $P(A \cup B) = P(A) + P(B) - P(AB)$, we have:
+$$
+P(A \cup B) + P(AB) = P(A) + P(B) = p + P(B)
+$$
+
+Thus we conclude that 
+$$
+P(B) = 1 - p
+$$
+
+\section{Page 30, Problem 46}
+
+\subsection{a}
+
+Let the event $A$ be $\{\text{a red ball is drawn}\}$, and the event $B$ be $\{\text{the coin shows heads up}\}$.
+
+Then we have:
+\begin{align*}
+P(A) &= P(A\mid B)P(B) + P(A\mid \bar{B})P(\bar{B})\\
+     &= \frac{3}{5}\cdot \frac{1}{2} + \frac{2}{7}\cdot \frac{1}{2} \\
+     &= \frac{31}{70}
+\end{align*}
+
+\subsection{b}
+
+From the Bayes' theorem, we have:
+\begin{align*}
+P(B|A) &= \frac{P(A|B)P(B)}{P(A)} \\
+       &= \frac{\frac{3}{5}\cdot \frac{1}{2}}{\frac{31}{70}} \\
+       &= \frac{21}{31}
+\end{align*}
+
+\section{Page 31, Problem 53}
+
+Let the event: 
+
+\begin{itemize}
+
+\item $A_1$ be $\{\text{the claims come from the high risk client}\}$
+\item $A_2$ be $\{\text{the claims come from the medium risk client}\}$
+\item $A_3$ be $\{\text{the claims come from the low risk client}\}$
+\item $B$ be $\{\text{the claims comes}\}$.
+\end{itemize}
+
+\begin{align*}
+P(A_1\mid B) &= \frac{P(B\mid A_1)P(A_1)}{P(B\mid A_1)P(A_1) + P(B\mid A_2)P(A_2) + P(B\mid A_3)P(A_3)}\\
+             &= \frac{0.02 \cdot 0.1}{0.02 \cdot 0.1 + 0.01 \cdot 0.2 + 0.0025 \cdot 0.7}\\
+             &= \frac{0.002}{0.002 + 0.002 + 0.00175} \\
+             &= \frac{8}{15}
+\end{align*}
+
+
+\section{Page 31, Problem 54}
+
+
+\section{Page 32, Problem 63}
+
+\section{Supplementary Problem 2.1}
+
+\section{Supplementary Problem 2.2}
+
+\section{Supplementary Problem 2.3}
+
+
+\end{document}
