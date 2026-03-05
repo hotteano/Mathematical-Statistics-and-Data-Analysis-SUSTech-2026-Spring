@@ -259,12 +259,12 @@ We have
 \begin{itemize}
   \item $P(A) = 0.6$
   \item $P(B \mid A) = 0.5$
-  \item $P(C \mid AB) = 0.7$
+  \item $P(C \mid AB) = 0.4$
 \end{itemize}
 
 We would like to find the probability 
 $$
-P(AB\bar{C}) = P(C\mid AB)P(AB) = P(C\mid AB)P(B\mid A)P(A) = 0.7 \cdot 0.5 \cdot 0.6 = 0.21
+P(AB\bar{C}) = P(\bar{C}\mid AB)P(AB) = (1 - P(C\mid AB))P(B\mid A)P(A) = (1 - 0.4) \cdot 0.5 \cdot 0.6 = 0.18
 $$
 
 \section{Supplementary Problem 2.3}
