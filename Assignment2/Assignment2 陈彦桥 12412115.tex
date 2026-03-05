@@ -160,8 +160,64 @@ P(A_1\mid B) &= \frac{P(B\mid A_1)P(A_1)}{P(B\mid A_1)P(A_1) + P(B\mid A_2)P(A_2
 
 \section{Page 31, Problem 54}
 
+\subsection{a}
+
+\begin{align*} 
+P(R_{i+1}) &= P(R_{i+1}\mid R_i)P(R_i) + P(R_{i+1}\mid \bar{R}_i)P(\bar{R}_i) \\
+           &= \alpha \cdot p + (1-\beta) \cdot (1-p)\\
+           &= (\alpha + \beta - 1) \cdot p + (1-\beta)
+\end{align*}
+
+\subsection{b} 
+
+\begin{align*}
+P(R_{i+2}) &= P(R_{i+2}\mid R_{i+1})P(R_{i+1}) + P(R_{i+2}\mid \bar{R}_{i+1})P(\bar{R}_{i+1}) \\
+           &= \alpha \cdot P(R_{i+1}) + (1-\beta) \cdot (1-P(R_{i+1})) \\
+           &= (\alpha + \beta - 1) \cdot (\alpha + \beta - 1) \cdot p + (1-\beta) \cdot (\alpha + \beta - 1) + (1-\beta)\\
+           &= (\alpha + \beta - 1)^2 \cdot p + (1-\beta) \cdot (\alpha + \beta)
+\end{align*}
+
+\subsection{c} 
+
+This is a linear homogeneous recurrence relation $p_{i + 1} = (\alpha + \beta - 1)p_i + (1-\beta)$. 
+
+Using undetermined coefficients, 
+$$
+(p_{i + 1} + k) = (\alpha + \beta - 1)(p_i + k) \Leftrightarrow (\alpha + \beta - 2)k = 1-\beta
+$$
+
+Thus, we have $k = \frac{1-\beta}{\alpha + \beta - 2}$.
+
+Then we have:
+$$
+p_i + k = (\alpha + \beta - 1)^i (p + k)
+$$
+
+Thus, we conclude that:
+$$
+p_n = (\alpha + \beta - 1)^n (p + \frac{1-\beta}{\alpha + \beta - 2}) - \frac{1-\beta}{\alpha + \beta - 2}
+$$
+
+From the property of the probability, $P(R_{i}|R_{i-1}) + P(\bar{R}_{i}|\bar{R_{i-1}}) = \alpha + \beta < 2$, then $\alpha + \beta - 1 < 1$. According to the property of the geometric series, the $\lim_{n\to \infty} p_n$ converges to $\frac{1-\beta}{2 - \alpha - \beta}$.
+
 
 \section{Page 32, Problem 63}
+
+Let 
+\begin{itemize}
+  \item event $A$ be $\{\text{a person reaches her 70th birthday}\}$
+  \item event $B$ be $\{\text{a person reaches her 80th birthday}\}$.
+\end{itemize}
+
+Then we have:
+\begin{align*}
+P(B\mid A) = \frac{P(AB)}{P(A)} 
+\end{align*}
+
+As $B \subseteq A$, we have $P(AB) = P(B)$, so:
+$$
+P(B\mid A) = \frac{P(B)}{P(A)} = \frac{0.2}{0.6} = \frac{1}{3}
+$$
 
 \section{Supplementary Problem 2.1}
 
