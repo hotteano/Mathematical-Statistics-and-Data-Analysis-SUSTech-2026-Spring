@@ -116,174 +116,83 @@ $$
 P(B) = 1 - p
 $$
 
-\section{Page 30, Problem 46}
-
-\subsection{a}
-
-Let the event $A$ be $\{\text{a red ball is drawn}\}$, and the event $B$ be $\{\text{the coin shows heads up}\}$.
-
-Then we have:
-\begin{align*}
-P(A) &= P(A\mid B)P(B) + P(A\mid \bar{B})P(\bar{B})\\
-     &= \frac{3}{5}\cdot \frac{1}{2} + \frac{2}{7}\cdot \frac{1}{2} \\
-     &= \frac{31}{70}
-\end{align*}
-
-\subsection{b}
-
-From the Bayes' theorem, we have:
-\begin{align*}
-P(B|A) &= \frac{P(A|B)P(B)}{P(A)} \\
-       &= \frac{\frac{3}{5}\cdot \frac{1}{2}}{\frac{31}{70}} \\
-       &= \frac{21}{31}
-\end{align*}
-
-\section{Page 31, Problem 53}
-
-Let the event: 
-
-\begin{itemize}
-
-\item $A_1$ be $\{\text{the claims come from the high risk client}\}$
-\item $A_2$ be $\{\text{the claims come from the medium risk client}\}$
-\item $A_3$ be $\{\text{the claims come from the low risk client}\}$
-\item $B$ be $\{\text{the claims comes}\}$.
-\end{itemize}
+\section{Page 27, Problem 12}
 
 \begin{align*}
-P(A_1\mid B) &= \frac{P(B\mid A_1)P(A_1)}{P(B\mid A_1)P(A_1) + P(B\mid A_2)P(A_2) + P(B\mid A_3)P(A_3)}\\
-             &= \frac{0.02 \cdot 0.1}{0.02 \cdot 0.1 + 0.01 \cdot 0.2 + 0.0025 \cdot 0.7}\\
-             &= \frac{0.002}{0.002 + 0.002 + 0.00175} \\
-             &= \frac{8}{15}
+N &= \binom{52}{5} \cdot \binom{47}{5} \cdot \binom{42}{5} \cdot \binom{37}{5} \cdot \binom{32}{5}
 \end{align*}
 
-
-\section{Page 31, Problem 54}
-
-\subsection{a}
-
-\begin{align*} 
-P(R_{i+1}) &= P(R_{i+1}\mid R_i)P(R_i) + P(R_{i+1}\mid \bar{R}_i)P(\bar{R}_i) \\
-           &= \alpha \cdot p + (1-\beta) \cdot (1-p)\\
-           &= (\alpha + \beta - 1) \cdot p + (1-\beta)
-\end{align*}
-
-\subsection{b} 
-
-\begin{align*}
-P(R_{i+2}) &= P(R_{i+2}\mid R_{i+1})P(R_{i+1}) + P(R_{i+2}\mid \bar{R}_{i+1})P(\bar{R}_{i+1}) \\
-           &= \alpha \cdot P(R_{i+1}) + (1-\beta) \cdot (1-P(R_{i+1})) \\
-           &= (\alpha + \beta - 1) \cdot (\alpha + \beta - 1) \cdot p + (1-\beta) \cdot (\alpha + \beta - 1) + (1-\beta)\\
-           &= (\alpha + \beta - 1)^2 \cdot p + (1-\beta) \cdot (\alpha + \beta)
-\end{align*}
-
-\subsection{c} 
-
-This is a linear homogeneous recurrence relation $p_{i + 1} = (\alpha + \beta - 1)p_i + (1-\beta)$. 
-
-Using undetermined coefficients, 
-$$
-(p_{i + 1} + k) = (\alpha + \beta - 1)(p_i + k) \Leftrightarrow (\alpha + \beta - 2)k = 1-\beta
-$$
-
-Thus, we have $k = \frac{1-\beta}{\alpha + \beta - 2}$.
-
-Then we have:
-$$
-p_i + k = (\alpha + \beta - 1)^i (p + k)
-$$
-
-Thus, we conclude that:
-$$
-p_n = (\alpha + \beta - 1)^n (p + \frac{1-\beta}{\alpha + \beta - 2}) - \frac{1-\beta}{\alpha + \beta - 2}
-$$
-
-From the property of the probability, $P(R_{i}|R_{i-1}) + P(\bar{R}_{i}|\bar{R_{i-1}}) = \alpha + \beta < 2$, then $\alpha + \beta - 1 < 1$. According to the property of the geometric series, the $\lim_{n\to \infty} p_n$ converges to $\frac{1-\beta}{2 - \alpha - \beta}$.
-
-
-\section{Page 32, Problem 63}
-
+\section{Page 29, Problem 29}
 Let 
 \begin{itemize}
-  \item event $A$ be $\{\text{a person reaches her 70th birthday}\}$
-  \item event $B$ be $\{\text{a person reaches her 80th birthday}\}$.
+  \item event $A$ be $\{\text{the player is dealt 3 spades and two hearts, and he discards two spades}\}$.
+  \item event $B$ be $\{\text{the player gets two more spades}\}$
 \end{itemize}
-
 Then we have:
 \begin{align*}
-P(B\mid A) = \frac{P(AB)}{P(A)} 
+P(B|A) = \frac{\binom{10}{2}}{\binom{47}{2}} = \frac{45}{1081} 
 \end{align*}
-
-As $B \subseteq A$, we have $P(AB) = P(B)$, so:
-$$
-P(B\mid A) = \frac{P(B)}{P(A)} = \frac{0.2}{0.6} = \frac{1}{3}
-$$
 
 \section{Supplementary Problem 2.1}
 
-The Monty Hall problem is a famous problem in probability theory. The problem is as follows:
+The problem is as follows: 
 
-\begin{quote}
-You are a contestant on a game show, and you are given the choice of three doors. Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to switch to door No. 2?" Is it to your advantage to switch your choice?
-\end{quote}
+Choose $2r$ shoes from $n$ pairs of shoes. Compute the probability of the following events:
 
-Let
+\subsection{a) No Matching Pair}
 
-\begin{itemize}
-  \item event $A_i$ be $\{\text{the contestant choose door No. } i\}$
-  \item event $B_i$ be $\{\text{the host opens door No. } i\}$.
-  \item event $C_i$ be $\{\text{the car is behind door No.} i\}$.
-\end{itemize}
+\paragraph{Method 1}
 
-We want to find $P(C_2\mid A_1B_3)$.
-
-\begin{align*} 
-P(C_2\mid A_1B_3) &= \frac{P(A_1B_3\mid C_2)P(C_2)}{P(A_1B_3\mid C_1)P(C_1) + P(A_1B_3\mid C_2)P(C_2) + P(A_1B_3\mid C_3)P(C_3)} \\
-&= \frac{1 \cdot \frac{1}{3}}{\frac{1}{2} \cdot 1} \\
-&= \frac{2}{3}
-\end{align*}
-
-Then the contestant should switch to door No. 2, which has a higher probability to win the car. $\square$
-
-\section{Supplementary Problem 2.2}
-
-Let 
-\begin{itemize}
-  \item event $A$ be $\{\text{the child get sick}\}$.
-  \item event $B$ be $\{\text{the mother get sick}\}$.
-  \item event $C$ be $\{\text{the father get sick}\}$.
-\end{itemize}
-
-We have 
-
-\begin{itemize}
-  \item $P(A) = 0.6$
-  \item $P(B \mid A) = 0.5$
-  \item $P(C \mid AB) = 0.4$
-\end{itemize}
-
-We would like to find the probability 
 $$
-P(AB\bar{C}) = P(\bar{C}\mid AB)P(AB) = (1 - P(C\mid AB))P(B\mid A)P(A) = (1 - 0.4) \cdot 0.5 \cdot 0.6 = 0.18
+|\Omega| = \binom{2n}{2r}
 $$
 
-\section{Supplementary Problem 2.3}
+and 
 
-Let 
-
-\begin{itemize}
-  \item event $A$ be $\{\text{the first product of the passed inspection}\}$.
-  \item event $B$ be $\{\text{the machine is well-adjusted}\}$.
-\end{itemize}
-
-We compute the 
 \begin{align*}
-P(B|A) &= \frac{P(A|B)P(B)}{P(A)} \\
-       &= \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|\bar{B})P(\bar{B})} \\
-       &= \frac{0.98\cdot 0.95}{0.98\cdot 0.95 + 0.05\cdot 0.55}\\
-       &= 0.9713
+|A| &= |\Omega| - |\{\text{there is at least 1 matching pair}\}| + \cdots + (-1)^r |\{\text{there are at least r matching pairs}\}| \\
+    &= \sum_{i=0}^r (-1)^i \binom{n}{i} \binom{2(n-i)}{2r-2i}
 \end{align*}
 
+The probability of the event "No Matching Pair" is 
+\begin{align*}
+P(\text{No Matching Pair}) &= \frac{|A|}{|\Omega|} = \frac{\sum_{i=0}^r (-1)^i \binom{n}{i} \binom{2(n-i)}{2r-2i}}{\binom{2n}{2r}}
+\end{align*}
+
+\paragraph{Method 2} 
+
+We choose $2r$ shoes from $n$ pairs of shoes, with each pair of them we choose the left shoe or the right shoe. Thus, we have:
+\begin{align*}
+|A| &= \binom{n}{2r} \cdot 2^{2r}
+\end{align*}
+
+Thus, the probability of the event "No Matching Pair" is
+\begin{align*}
+P(\text{No Matching Pair}) &= \frac{|A|}{|\Omega|} = \frac{\binom{n}{2r} \cdot 2^{2r}}{\binom{2n}{2r}}
+\end{align*}
+
+It can be proven that the two methods are equivalent.
+
+\subsection{b) There is exactly one matching pair} 
+
+We choose one pair of shoes from $n$ pairs of shoes, and then we choose $2r-2$ shoes from the remaining $n-1$ pairs of shoes, with each pair of them we choose the left shoe or the right shoe. Thus, we have:
+$$
+P(\text{Exactly one matching pair}) = \frac{\binom{n}{1} \cdot \binom{n-1}{2r-2} \cdot 2^{2r-2}}{\binom{2n}{2r}}
+$$
+
+\subsection{c) There are exactly r matching pairs}
+
+Similar to the method in part b), we have:
+$$
+P(\text{Exactly r matching pairs}) = \frac{\binom{n}{r}}{\binom{2n}{2r}}
+$$
+
+\begin{remark} 
+It can be proven that for $k$ matching pairs, the result is 
+$$
+P(\text{Exactly $k$ matching pairs}) = \frac{\binom{n}{k} \cdot \binom{n-k}{2(r-k)}\cdot 2^{2(r-k)}}{\binom{2n}{2r}}
+$$
+\end{remark}
 
 
 \end{document}
