@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.17)  6 MAR 2026 15:40
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.17)  12 MAR 2026 17:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -458,7 +458,15 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 [2]
 
-[3] (./Assignment3 陈彦桥 12412115.aux)
+[3]
+
+[4]
+
+[5]
+
+[6]
+
+[7] (./Assignment3 陈彦桥 12412115.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -467,12 +475,12 @@ Package rerunfilecheck Info: File `"Assignment3 陈彦桥 12412115".out' has not
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 12473 strings out of 469606
- 194458 string characters out of 5465410
- 651141 words of memory out of 5000000
- 40774 multiletter control sequences out of 15000+600000
- 662086 words of font info for 79 fonts, out of 8000000 for 9000
+ 12479 strings out of 469606
+ 194578 string characters out of 5465410
+ 653605 words of memory out of 5000000
+ 40779 multiletter control sequences out of 15000+600000
+ 665081 words of font info for 80 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  72i,10n,79p,1019b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Assignment3 陈彦桥 12412115.pdf (3 pages).
+Output written on Assignment3 陈彦桥 12412115.pdf (7 pages).

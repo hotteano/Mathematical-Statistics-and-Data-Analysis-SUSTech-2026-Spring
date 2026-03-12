@@ -80,7 +80,7 @@ Let the event:
 P(A_1\mid B) &= \frac{P(B\mid A_1)P(A_1)}{P(B\mid A_1)P(A_1) + P(B\mid A_2)P(A_2) + P(B\mid A_3)P(A_3)}\\
              &= \frac{0.02 \cdot 0.1}{0.02 \cdot 0.1 + 0.01 \cdot 0.2 + 0.0025 \cdot 0.7}\\
              &= \frac{0.002}{0.002 + 0.002 + 0.00175} \\
-             &= \frac{8}{15}
+             &= \frac{8}{23}
 \end{align*}
 
 
@@ -145,7 +145,7 @@ $$
 P(B\mid A) = \frac{P(B)}{P(A)} = \frac{0.2}{0.6} = \frac{1}{3}
 $$
 
-\section{Supplementary Problem 2.1}
+\section{Supplementary Problem 1.1}
 
 The Monty Hall problem is a famous problem in probability theory. The problem is as follows:
 
@@ -165,13 +165,15 @@ We want to find $P(C_2\mid A_1B_3)$.
 
 \begin{align*} 
 P(C_2\mid A_1B_3) &= \frac{P(A_1B_3\mid C_2)P(C_2)}{P(A_1B_3\mid C_1)P(C_1) + P(A_1B_3\mid C_2)P(C_2) + P(A_1B_3\mid C_3)P(C_3)} \\
-&= \frac{1 \cdot \frac{1}{3}}{\frac{1}{2} \cdot 1} \\
+&= \frac{1 \cdot \frac{1}{3}}{\frac{1}{2} \cdot \frac{1}{3} + 1 \cdot \frac{1}{3} + 0 \cdot \frac{1}{3}} \\
+&= \frac{\frac{1}{3}}{\frac{1}{6} + \frac{1}{3}} \\
+&= \frac{\frac{1}{3}}{\frac{1}{2}} \\
 &= \frac{2}{3}
 \end{align*}
 
 Then the contestant should switch to door No. 2, which has a higher probability to win the car. $\square$
 
-\section{Supplementary Problem 2.2}
+\section{Supplementary Problem 1.2}
 
 Let 
 \begin{itemize}
@@ -193,7 +195,7 @@ $$
 P(AB\bar{C}) = P(\bar{C}\mid AB)P(AB) = (1 - P(C\mid AB))P(B\mid A)P(A) = (1 - 0.4) \cdot 0.5 \cdot 0.6 = 0.18
 $$
 
-\section{Supplementary Problem 2.3}
+\section{Supplementary Problem 1.3}
 
 Let 
 
@@ -209,5 +211,301 @@ P(B|A) &= \frac{P(A|B)P(B)}{P(A)} \\
        &= \frac{0.98\cdot 0.95}{0.98\cdot 0.95 + 0.05\cdot 0.55}\\
        &= 0.9713
 \end{align*}
+
+\section{Page 32, Problem 68}
+
+The statement is false. Independence is not transitive. We provide a counterexample.
+
+Consider the sample space $\Omega = \{1, 2, 3, 4, 5, 6\}$ with uniform probability distribution.
+
+Define three events:
+\begin{itemize}
+    \item $A = \{1, 2, 3, 4\}$, so $P(A) = \frac{4}{6} = \frac{2}{3}$
+    \item $B = \{1, 2, 5\}$, so $P(B) = \frac{3}{6} = \frac{1}{2}$
+    \item $C = \{1, 2, 3, 6\}$, so $P(C) = \frac{4}{6} = \frac{2}{3}$
+\end{itemize}
+
+\textbf{Verification:}
+
+1. Check $A$ and $B$:
+   - $A \cap B = \{1, 2\}$, so $P(AB) = \frac{2}{6} = \frac{1}{3}$
+   - $P(A)P(B) = \frac{2}{3} \times \frac{1}{2} = \frac{1}{3}$
+   - Therefore, $A$ and $B$ are independent.
+
+2. Check $B$ and $C$:
+   - $B \cap C = \{1, 2\}$, so $P(BC) = \frac{2}{6} = \frac{1}{3}$
+   - $P(B)P(C) = \frac{1}{2} \times \frac{2}{3} = \frac{1}{3}$
+   - Therefore, $B$ and $C$ are independent.
+
+3. Check $A$ and $C$:
+   - $A \cap C = \{1, 2, 3\}$, so $P(AC) = \frac{3}{6} = \frac{1}{2}$
+   - $P(A)P(C) = \frac{2}{3} \times \frac{2}{3} = \frac{4}{9}$
+   - Since $\frac{1}{2} \neq \frac{4}{9}$, $A$ and $C$ are \textbf{not} independent.
+
+Thus, we have $A \perp B$ and $B \perp C$, but $A \not\perp C$, proving that independence is not transitive.
+
+\section{Page 32, Problem 71}
+
+From the property of mutually independent events, we have:
+\begin{align*}
+P(ABC) &= P(A)P(B)P(C) \\
+P(AB) &= P(A)P(B) \\
+P(AC) &= P(A)P(C) \\
+P(BC) &= P(B)P(C)
+\end{align*}
+
+Thus, 
+\begin{align*}
+P(ABC) = P(A)P(B)P(C) = P(AB)P(C)
+\end{align*}
+
+Then we conclude that $P(ABC) = P(AB)P(C)$, which means that $AB$ is independent of $C$. Similarly, 
+
+\begin{align*} 
+P((A \cup B)C) &= P(AC \cup BC) = P(AC) + P(BC) - P(ABC)\\ 
+               &= P(A)P(C) + P(B)P(C) - P(A)P(B)P(C)\\ 
+               &= (P(A)+P(B)-P(AB))P(C) \\
+               &= P((A \cup B))P(C)\\
+\end{align*}
+
+which means that $A \cup B$ is independent of $C$. $\square$
+
+\section{Page 33, Problem 74}
+
+Let $P(A_i)$ represent "the unit $i$ fails", with $P(A_i) = p$.
+
+The system works if at least one of the three parallel branches works:
+- Branch 1: units 1 and 2 in series (works if both work)
+- Branch 2: unit 3 alone
+- Branch 3: units 4 and 5 in series
+
+Let $S_1 = \overline{A_1 \cup A_2}$ (branch 1 works), $S_2 = \overline{A_3}$ (branch 2 works), $S_3 = \overline{A_4 \cup A_5}$ (branch 3 works).
+
+Since the branches share no common units, they are independent. We use the complement rule:
+
+\begin{align*}
+P(\text{system works}) &= 1 - P(\text{all branches fail}) \\
+&= 1 - P(S_1^c)P(S_2^c)P(S_3^c)
+\end{align*}
+
+where:
+\begin{align*}
+P(S_1^c) &= P(A_1 \cup A_2) = 1 - P(\bar{A_1})P(\bar{A_2}) = 1 - (1-p)^2 = 2p - p^2 \\
+P(S_2^c) &= P(A_3) = p \\
+P(S_3^c) &= P(A_4 \cup A_5) = 1 - (1-p)^2 = 2p - p^2
+\end{align*}
+
+Therefore:
+\begin{align*}
+P(\text{system works}) &= 1 - (2p-p^2) \cdot p \cdot (2p-p^2) \\
+&= 1 - p(2p-p^2)^2 \\
+&= 1 - p(4p^2 - 4p^3 + p^4) \\
+&= 1 - 4p^3 + 4p^4 - p^5
+\end{align*}
+
+Alternatively, using inclusion-exclusion principle:
+\begin{align*}
+P(S_1 \cup S_2 \cup S_3) &= P(S_1) + P(S_2) + P(S_3) - P(S_1S_2) - P(S_1S_3) - P(S_2S_3) + P(S_1S_2S_3) \\
+&= 2(1-p)^2 + (1-p) - 2(1-p)^3 - (1-p)^4 + (1-p)^5 \\
+&= 1 - 4p^3 + 4p^4 - p^5
+\end{align*}
+
+\section{Page 33, Problem 77}
+
+Let the throwing time be $n$, let $A_i$ be "the player succeed".
+
+We obtain 
+\begin{align*}
+P(\bigcup_{i=1}^n A_i)  &= 1- P(\bigcap_{i=1}^n \bar{A_i}) \\
+                        &= 1 - (0.95)^n \\ 
+                        &\geq 0.5
+\end{align*}
+
+Thus the inequality will be 
+$$
+(0.95)^n \leq 0.5
+$$
+
+Taking logarithm we obtain 
+$$
+n \geq \frac{\ln 0.5}{\ln(0.95)} \approx 13.51
+$$
+
+As $n \in \mathbb{Z}$, thus $n_{min} = 14$.
+
+\section{Page 34, Problem 79}
+
+\subsection{a} 
+
+It is obvious that 
+\begin{align*} 
+P(AA) = \frac{1}{4} \\
+P(Aa) = \frac{1}{2} \\ 
+P(aa) = \frac{1}{4} 
+\end{align*} 
+
+\subsection{b} 
+
+Let $B$ be "the male offspring is not diseased", $A$ be "the male is a carrier".
+
+The probability is 
+$$
+P(A|B) = \frac{P(AB)}{P(B)} = \frac{2}{4} \times \frac{4}{3} = \frac{2}{3}
+$$
+
+\subsection{c} 
+
+Let $F$ denote the father (the nondiseased offspring from part (b)), and $M$ denote the mother (a random population member with probability $p$ of being a carrier).
+
+From part (b), we have:
+\begin{align*}
+P(F = AA \mid \text{nondiseased}) &= \frac{1}{3} \\
+P(F = Aa \mid \text{nondiseased}) &= \frac{2}{3}
+\end{align*}
+
+For the mother:
+\begin{align*}
+P(M = Aa) &= p \\
+P(M = AA) &= 1-p
+\end{align*}
+
+We calculate the probabilities by considering all four mating combinations:
+
+\textbf{Case 1:} $F = AA$ and $M = Aa$ (probability $\frac{1}{3} \cdot p$)
+\begin{itemize}
+    \item Offspring $AA$: $\frac{1}{2}$
+    \item Offspring $Aa$: $\frac{1}{2}$
+    \item Offspring $aa$: $0$
+\end{itemize}
+
+\textbf{Case 2:} $F = Aa$ and $M = Aa$ (probability $\frac{2}{3} \cdot p$)
+\begin{itemize}
+    \item Offspring $AA$: $\frac{1}{4}$
+    \item Offspring $Aa$: $\frac{1}{2}$
+    \item Offspring $aa$: $\frac{1}{4}$
+\end{itemize}
+
+\textbf{Case 3:} $F = AA$ and $M = AA$ (probability $\frac{1}{3} \cdot (1-p)$)
+\begin{itemize}
+    \item Offspring $AA$: $1$
+    \item Offspring $Aa$: $0$
+    \item Offspring $aa$: $0$
+\end{itemize}
+
+\textbf{Case 4:} $F = Aa$ and $M = AA$ (probability $\frac{2}{3} \cdot (1-p)$)
+\begin{itemize}
+    \item Offspring $AA$: $\frac{1}{2}$
+    \item Offspring $Aa$: $\frac{1}{2}$
+    \item Offspring $aa$: $0$
+\end{itemize}
+
+Now we compute the total probabilities:
+
+\begin{align*}
+P(\text{offspring is } AA) &= \frac{1}{3}p \cdot \frac{1}{2} + \frac{2}{3}p \cdot \frac{1}{4} + \frac{1}{3}(1-p) \cdot 1 + \frac{2}{3}(1-p) \cdot \frac{1}{2}\\
+&= \frac{p}{6} + \frac{p}{6} + \frac{1-p}{3} + \frac{1-p}{3}\\
+&= \frac{p}{3} + \frac{2(1-p)}{3}\\
+&= \frac{2-p}{3}
+\end{align*}
+
+\begin{align*}
+P(\text{offspring is } Aa) &= \frac{1}{3}p \cdot \frac{1}{2} + \frac{2}{3}p \cdot \frac{1}{2} + \frac{1}{3}(1-p) \cdot 0 + \frac{2}{3}(1-p) \cdot \frac{1}{2}\\
+&= \frac{p}{6} + \frac{p}{3} + 0 + \frac{1-p}{3}\\
+&= \frac{p}{6} + \frac{2p}{6} + \frac{2(1-p)}{6}\\
+&= \frac{p + 2}{6}
+\end{align*}
+
+\begin{align*}
+P(\text{offspring is } aa) &= \frac{1}{3}p \cdot 0 + \frac{2}{3}p \cdot \frac{1}{4} + \frac{1}{3}(1-p) \cdot 0 + \frac{2}{3}(1-p) \cdot 0\\
+&= 0 + \frac{p}{6} + 0 + 0\\
+&= \frac{p}{6}
+\end{align*}
+
+We can verify that these probabilities sum to 1:
+\[
+\frac{2-p}{3} + \frac{p+2}{6} + \frac{p}{6} = \frac{4-2p+p+2+p}{6} = \frac{6}{6} = 1
+\]
+
+\section{Supplementary Problem 2.1}
+
+Given that 
+$$
+P(\overline{A \cup B})= P(\bar{A})P(\bar{B})= \frac{1}{9}
+$$
+and 
+$$
+P(A \bar{B}) = P(\bar{A}B) \Leftrightarrow P(A)P(\bar{B}) = P(\bar{A}) P(B) = P(\bar{A})(1 - P(\bar{B})) = P(\bar{A}) - \frac{1}{9}
+$$
+
+Notice that 
+$$
+P(A \cup B) = P(A) + P(B) - P(A)P(B)
+$$
+
+Thus 
+$$
+P(A)P(\bar{B}) = P(B) - P(A)P(B)
+$$
+
+Then 
+$$
+P(A) = P(B)
+$$
+
+Thus 
+$$
+P(\bar{A}) = \frac{1}{3}
+$$
+
+And we conclude that 
+$$
+P(A) = \frac{2}{3}
+$$
+
+\section{Supplementary Problem 2.2}
+
+\begin{align*} 
+P(A\cup B\cup C) = P(A) + P(B) + P(C) - P(AB) - P(BC) - P(AC) = \frac{9}{16}
+\end{align*}
+
+Denote 
+$$
+P(A) = p
+$$
+
+We obtain 
+$$
+16p^2 - 16 p  +3 = 0
+$$
+
+Solving this 
+$$
+(4p - 3)(4p - 1) = 0
+$$
+
+We obatin 
+$$
+p_1 = \frac{3}{4}, p_2 = \frac{1}{4}
+$$
+
+However, as 
+$$
+P(AB) = P(AB \cap \bar{C}) \leq P(\bar{C}) = 1-p
+$$
+
+Thus, 
+$$
+p^2 \leq 1 - p
+$$
+
+We obtain 
+$$
+p \leq \frac{\sqrt{5} - 1}{2} \approx 0.618 < \frac{3}{4}
+$$
+
+Thus 
+$$
+p = \frac{1}{4}
+$$
 
 \end{document}
