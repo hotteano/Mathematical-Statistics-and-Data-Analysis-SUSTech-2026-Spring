@@ -260,10 +260,25 @@ $$
 
 \subsection{a}
 
+Let $X$ represents the number of the people that dies in the year. We have $X \sim B(2500, 0.002)$. The total profit is $30000 - 2000X$.
 
+Thus the probability that the company have a deficit is 
+$$
+P(30000 - 2000X < 0) = P(X > 15) = 1 - P(X \leq 15) = 1 - \sum_{k=0}^{15} \binom{2500}{k} (0.002)^k (0.998)^{2500-k}
+$$
 
 \subsection{b}
 
+The probability that the company have a profit over 10000 is 
+$$
+P(30000 - 2000X > 10000) = P(X < 10) = \sum_{k=0}^{9} \binom{2500}{k} (0.002)^k (0.998)^{2500-k}
+$$
 
+The probability that the company have a profit over 20000 is 
+$$
+P(30000 - 2000X > 20000) = P(X < 5) = \sum_{k=0}^{4} \binom{2500}{k} (0.002)^k (0.998)^{2500-k}
+$$
+
+We omit the numerical calculation here.
 
 \end{document}
