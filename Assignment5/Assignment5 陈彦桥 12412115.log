@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.17)  19 MAR 2026 14:33
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.10.17)  26 MAR 2026 19:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"Assignment4 陈彦桥 12412115"
-(./Assignment4 陈彦桥 12412115.tex
+**"Assignment5 陈彦桥 12412115"
+(./Assignment5 陈彦桥 12412115.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (c:/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -587,8 +587,8 @@ File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
 LaTeX Warning: Unused global option(s):
     [UTF-8].
 
-(./Assignment4 陈彦桥 12412115.aux)
-\openout1 = `"Assignment4 陈彦桥 12412115.aux"'.
+(./Assignment5 陈彦桥 12412115.aux)
+\openout1 = `"Assignment5 陈彦桥 12412115.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
 LaTeX Font Info:    ... okay on input line 33.
@@ -650,9 +650,9 @@ Package pgfplots Warning: running in backwards compatibility mode (unsuitable ti
  on input line 33.
 
 Package hyperref Info: Link coloring OFF on input line 33.
-(./Assignment4 陈彦桥 12412115.out) (./Assignment4 陈彦桥 12412115.out)
+(./Assignment5 陈彦桥 12412115.out) (./Assignment5 陈彦桥 12412115.out)
 \@outlinefile=\write4
-\openout4 = `"Assignment4 陈彦桥 12412115.out"'.
+\openout4 = `"Assignment5 陈彦桥 12412115.out"'.
 
 LaTeX Info: Redefining \microtypecontext on input line 33.
 Package microtype Info: Applying patch `item' on input line 33.
@@ -697,23 +697,21 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 [2]
 
-[3]
-
-[4] (./Assignment4 陈彦桥 12412115.aux)
+[3] (./Assignment5 陈彦桥 12412115.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
-Package rerunfilecheck Info: File `"Assignment4 陈彦桥 12412115".out' has not changed.
+Package rerunfilecheck Info: File `"Assignment5 陈彦桥 12412115".out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 33163 strings out of 469606
- 769202 string characters out of 5465410
- 1309343 words of memory out of 5000000
- 61107 multiletter control sequences out of 15000+600000
- 665981 words of font info for 79 fonts, out of 8000000 for 9000
+ 32688 strings out of 469606
+ 755422 string characters out of 5465410
+ 1267216 words of memory out of 5000000
+ 60635 multiletter control sequences out of 15000+600000
+ 653115 words of font info for 76 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 99i,16n,105p,1019b,1925s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,8n,105p,1019b,343s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Assignment4 陈彦桥 12412115.pdf (4 pages).
+Output written on Assignment5 陈彦桥 12412115.pdf (3 pages).

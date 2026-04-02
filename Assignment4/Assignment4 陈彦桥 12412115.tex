@@ -32,7 +32,7 @@
 
 \begin{document}
 
-\title{Assignment 1}
+\title{Assignment 4}
 
 \author{Yanqiao Chen\\ 
   Department of Computer Science and Engineering\\
@@ -123,9 +123,9 @@ coordinates {(0,0.250) (1,0.375) (2,0.500) (3,1.000)};
 
 \section{Page 64, Problem 15}
 
-Let the random variable $X$ be the number of team A wins. And $X \sim B(n, 0,4)$.  
+Let the random variable $X$ be the number of team A wins. And $X \sim B(n, 0.4)$.  
 
-In the three out of five games, the team A wins 3 games, so the probability is 
+In the three out of five games, the team A wins at least 3 games, so the probability is 
 
 \begin{align*}
 P(X \geq 3) &= P(X=3) + P(X=4) + P(X=5) \\
@@ -133,12 +133,14 @@ P(X \geq 3) &= P(X=3) + P(X=4) + P(X=5) \\
             &= 0.31744 \\
 \end{align*}
 
-In the 4 out of 7 games, the team A wins 4 games, so the probability is
+In the 4 out of 7 games, the team A wins at least 4 games, so the probability is
 \begin{align*}
 P(X \geq 4) &= P(X=4) + P(X=5) + P(X=6) + P(X=7) \\
             &= \binom{7}{4} (0.4)^4 (0.6)^3 + \binom{7}{5} (0.4)^5 (0.6)^2 + \binom{7}{6} (0.4)^6 (0.6)^1 + \binom{7}{7} (0.4)^7 (0.6)^0 \\
             &= 0.289792 \\
 \end{align*}
+
+Since $0.31744 > 0.289792$, it is to team A's advantage to play the best three out of five games.
 
 \section{Page 64, Problem 31}
 
@@ -160,15 +162,15 @@ P(X \geq 1) &= 1 - P(X=0) \\
 
 Let the time length be $T$, we have 
 $$
-P(X = 0) = e^{-2 \times T} \geq 0.5
+P(X = 0) = e^{-2 \times T} \leq 0.5
 $$
 
 Thus, we obtain 
 $$
-2T \leq \ln 2 \Rightarrow T \leq \frac{\ln 2}{2} \approx 0.3466
+2T \geq \ln 2 \Rightarrow T \geq \frac{\ln 2}{2} \approx 0.3466
 $$
 
-Thus the answer is approximately 0.3466 hours, which is about 20.8 minutes.
+Thus the answer is at least approximately 0.3466 hours, which is about 20.8 minutes.
 
 \section{Supplementary Problem 1.1}
 
@@ -206,7 +208,7 @@ $$
 \lambda - 1 \leq k \leq \lambda
 $$
 
-Thus we obain the probability that $X$ takes the value of $k$ is the largest is
+Thus we obtain the probability that $X$ takes the value of $k$ is the largest is
 \begin{align*} 
     k = \begin{cases}
     \lambda - 1 \text{ or } \lambda, & \text{if } \lambda \text{ is an integer} \\
@@ -222,7 +224,7 @@ Thus we obain the probability that $X$ takes the value of $k$ is the largest is
 The frequency function of $X$ is
 
 $$
-P(X = x) = \frac{\binom{2}{x}\binom{13}{3-x}}{\binom{15}{3}}
+P(X = x) = \frac{\binom{2}{x}\binom{13}{3-x}}{\binom{15}{3}}, x = 0, 1, 2
 $$
 
 \subsection{b} 
@@ -231,17 +233,16 @@ The distribution function of $X$ is
 \begin{align*}
 P(X \leq x) = \begin{cases}
 0, & x < 0 \\
-\frac{\binom{13}{3}}{\binom{15}{3}}, & 0 \leq x < 1 \\
-\frac{\binom{2}{1}\binom{13}{2} + \binom{13}{3}}{\binom{15}{3}}, & 1 \leq x < 2 \\
-\frac{\binom{2}{2}\binom{13}{1} + \binom{2}{1}\binom{13}{2} + \binom{13}{3}}{\binom{15}{3}}, & 2 \leq x < 3 \\
-1, & x \geq 3
+\frac{22}{35}, & 0 \leq x < 1 \\
+\frac{34}{35}, & 1 \leq x < 2 \\
+1, & 2 \leq x 
 \end{cases}
 \end{align*}
 
 \subsection{c} 
 
 $$
-P(X \leq \frac{1}{2}) = \frac{\binom{13}{3}}{\binom{15}{3}}
+P(X \leq \frac{1}{2}) = \frac{22}{35}
 $$
 
 $$
@@ -249,7 +250,7 @@ P(1 < X \leq \frac{3}{2}) = P(X \leq \frac{3}{2}) - P(X \leq 1) = 0
 $$
 
 $$
-P(1 \leq X \leq \frac{3}{2}) = P(X \leq \frac{3}{2}) - P(X \leq 1) + P(X = 1) = \frac{\binom{2}{1}\binom{13}{2}}{\binom{15}{3}}
+P(1 \leq X \leq \frac{3}{2}) = P(X \leq \frac{3}{2}) - P(X \leq 1) + P(X = 1) = \frac{12}{35}
 $$
 
 $$
@@ -278,7 +279,26 @@ The probability that the company have a profit over 20000 is
 $$
 P(30000 - 2000X > 20000) = P(X < 5) = \sum_{k=0}^{4} \binom{2500}{k} (0.002)^k (0.998)^{2500-k}
 $$
+We omit the accurate numerical calculation here.
 
-We omit the numerical calculation here.
+\begin{remark}
+Since $n$ is relatively large and $p$ is relatively small, we can use the Poisson distribution to approximate the Binomial distribution. Let $\lambda = np = 2500 \times 0.002 = 5$. Thus we have $X \sim P(5)$.
+
+Thus the probability that the company have a deficit is
+$$
+P(X > 15) = 1 - P(X \leq 15) \approx 1 - \sum_{k=0}^{15} \frac{5^k}{k!}e^{-5} \approx 6.90 \times 10^{-5}
+$$
+
+The probability that the company have a profit over 10000 is
+$$
+P(X < 10) \approx \sum_{k=0}^{9} \frac{5^k}{k!}e^{-5} \approx 0.9682
+$$
+
+The probability that the company have a profit over 20000 is
+$$
+P(X < 5) \approx \sum_{k=0}^{4} \frac{5^k}{k!}e^{-5} \approx 0.4405
+$$
+
+\end{remark}
 
 \end{document}
