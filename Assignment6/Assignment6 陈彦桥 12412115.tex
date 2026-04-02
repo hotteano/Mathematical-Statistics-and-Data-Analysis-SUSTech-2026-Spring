@@ -43,7 +43,54 @@
 
 \maketitle
 
-\section{Page 67, Problem 33}
+\section{Page 69, Problem 56}
+
+For $Y = |X|$, $X \sim N(\mu, \sigma^2)$, when $y < 0$, we have $f_Y(y) = 0$ since $Y$ is non-negative. For $y \geq 0$, we have
+\begin{align*}
+f_Y(y) &= \sum_{i=1}^2 (g_i^{-1})'(y) f_X(g_i^{-1}(y)) \\
+&= -f_X(-y) + f_X(y) \\ 
+&= -\frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(-y-\mu)^2}{2\sigma^2}\right) + \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(y-\mu)^2}{2\sigma^2}\right) \\
+&= \frac{1}{\sqrt{2\pi}\sigma} \left[\exp\left(-\frac{(y-\mu)^2}{2\sigma^2}\right) - \exp\left(-\frac{(y+\mu)^2}{2\sigma^2}\right)\right]
+\end{align*}
+
+Then the density function is 
+$$
+f_Y(y) = \begin{cases}
+0, & y < 0 \\
+\frac{1}{\sqrt{2\pi}\sigma} \left[\exp\left(-\frac{(y-\mu)^2}{2\sigma^2}\right) - \exp\left(-\frac{(y+\mu)^2}{2\sigma^2}\right)\right], & y \geq 0
+\end{cases}
+$$
+
+\section{Page 69, Problem 59}
+
+From the problem, $U \sim U(0, 1)$, then for $Y = \sqrt{U}$, we have 
+\begin{itemize}
+    \item $\sqrt{U} \geq 0$, thus for $y < 0$, $f_Y(y) = 0$. 
+    \item For $y \geq 0$, we have
+    \begin{align*}
+f_Y(y) &= (g^{-1})'(y) f_U(g^{-1}(y)) \\
+&= 2y \cdot 1 \\
+&= 2y
+\end{align*}
+\end{itemize}
+
+Then the density function is
+$$
+f_Y(y) = \begin{cases}
+0, & y < 0 \\
+2y, & y \geq 0
+\end{cases}
+$$
+
+\section{Page 69, Problem 62}
+
+\section{Supplementary Problem 1}
+
+\section{Supplementary Problem 2}
+
+\section{Supplementary Problem 3}
+
+\section{Supplementary Problem 4}
 
 
 
