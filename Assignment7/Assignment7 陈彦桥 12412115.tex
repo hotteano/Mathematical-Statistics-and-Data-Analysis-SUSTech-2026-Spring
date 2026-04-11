@@ -3,7 +3,6 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{amsmath}
-\usepackage{pgfplots}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 
@@ -13,7 +12,6 @@
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
-\usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
 
@@ -32,7 +30,7 @@
 
 \begin{document}
 
-\title{Assignment 6}
+\title{Assignment 7}
 
 \author{Yanqiao Chen\\ 
   Department of Computer Science and Engineering\\
@@ -45,26 +43,286 @@
 
 \section{Page 107, Problem 3}
 
+Let $X$, $Y$, $Z$ be the random variables representing the number of games that each player
+wins respectively. Since three players play 10 independent rounds together and each round has exactly one winner, we have $X + Y + Z = 10$. The joint distribution follows a multinomial distribution:
+$$
+P(X = i, Y = j, Z = k) = \frac{10!}{i!j!k!} \left(\frac{1}{3}\right)^{i} \left(\frac{1}{3}\right)^{j} \left(\frac{1}{3}\right)^{k} = \frac{10!}{i!j!k!} \left(\frac{1}{3}\right)^{10}
+$$
+
+Formally, we have
+\begin{align*}
+P(X = i, Y = j, Z = k) = \begin{cases}
+\dfrac{10!}{i!j!k!} \left(\dfrac{1}{3}\right)^{10} & \text{if } i, j, k \geq 0, \quad i + j + k = 10\\[8pt]
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
 \section{Supplementary Problem 1.1}
+
+From the problem we know, $Y = |X - (3 - X)| = |2X - 3|$, thus 
+\begin{align*} 
+f(0,3) = P(X = 0, Y = 3) &= P(X = 0) = \frac{1}{8}\\
+f(1,1) = P(X = 1, Y = 1) &= P(X = 1) = \frac{3}{8}\\
+f(2,1) = P(X = 2, Y = 1) &= P(X = 2) = \frac{3}{8}\\
+f(3,3) = P(X = 3, Y = 3) &= P(X = 3) = \frac{1}{8}
+\end{align*}
 
 \section{Supplementary Problem 1.2}
 
+From the problem, 
+\begin{align*} 
+f(-1, 1) = P(X = -1, Y = 1) &= P(X = -1) = \frac{1}{3}\\ 
+f(0, 0) = P(X = 0, Y = 0) &= P(X = 0) = \frac{1}{3}\\
+f(1, 1) = P(X = 1, Y = 1) &= P(X = 1) = \frac{1}{3}
+\end{align*}
+
+The marginal frequency function of $X$ is 
+$$
+f_X(x) = \begin{cases}
+\frac{1}{3} & \text{if } x = -1, 0, 1\\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+The marginal frequency function of $Y$ is
+$$
+f_Y(y) = \begin{cases}
+\frac{2}{3} & \text{if } y = 1\\
+\frac{1}{3} & \text{if } y = 0\\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+
 \section{Supplementary Problem 1.3}
+
+From the problem, we have
+\begin{align*}
+f(y) = \frac{1}{1}e^{-y/1} = e^{-y}
+\end{align*}
+
+The joint frequency function of $X_1, X_2$ is 
+\begin{align*} 
+f(1, 1) = P((Y > 1) \cap (Y > 2)) = P(Y > 2) = e^{-2}\\
+f(1, 0) = P((Y > 1) \cap (Y \leq 2)) = P((Y > 1) \cap (Y \leq 2)) = e^{-1} - e^{-2}\\
+f(0, 1) = P((Y \leq 1) \cap (Y > 2)) = P(\emptyset) = 0\\
+f(0, 0) = P((Y \leq 1) \cap (Y \leq 2)) = P(Y \leq 1) = 1 - e^{-1}
+\end{align*}
+
+The marginal frequency function of $X_1$ is
+\begin{align*}
+f_{X_1}(1) = P(X_1 = 1) = P(Y > 1) = e^{-1}\\
+f_{X_1}(0) = P(X_1 = 0) = P(Y \leq 1) = 1 - e^{-1}
+\end{align*}
+
+The marginal frequency function of $X_2$ is
+\begin{align*}
+f_{X_2}(1) = P(X_2 = 1) = P(Y > 2) = e^{-2}\\
+f_{X_2}(0) = P(X_2 = 0) = P(Y \leq 2) = 1 - e^{-2}
+\end{align*}
 
 \section{Page 107, Problem 5}
 
+The position of the needle is determined by the distance of the middle of the needle to the lines and the angle between the needle 
+and the parallel lines. Let $d$ be the the variable representing the distance of the middle of the needle to the lines, and 
+$\theta$ be the variable representing the angle between the needle and the parallel lines. Let us assume that 
+ $d \sim U(0, \frac{D}{2})$ and $\theta \sim U(0, \frac{\pi}{2})$. The probability that the needle crosses 
+ the lines is 
+$$
+P(d < \frac{L}{2} \sin \theta) = \iint_{H} f(d, \theta) \mathrm{d}d \mathrm{d}\theta, H = \{(d, \theta) | 0 < d < \frac{L}{2} \sin \theta, 0 < \theta < \frac{\pi}{2}\}
+$$
+where 
+$$
+f(d, \theta) = f_d(d) f_\theta(\theta) = \frac{2}{D} \cdot \frac{2}{\pi} = \frac{4}{D\pi}
+$$
+
+Thus, the probability that the needle crosses the lines is
+\begin{align*}
+\iint_{H} f(d, \theta) \mathrm{d}d \mathrm{d}\theta &= \int_0^{\pi/2} \int_0^{\frac{L}{2} \sin \theta} \frac{4}{D\pi} \mathrm{d}d \mathrm{d}\theta\\
+&= \int_0^{\pi/2} \frac{2L}{D\pi} \sin \theta \mathrm{d}\theta\\
+&= \frac{2L}{D\pi} \int_0^{\pi/2} \sin \theta \mathrm{d}\theta\\
+&= \frac{2L}{D\pi}
+\end{align*}
+
+From the frequency of the needle crossing the lines, we can estimate $\pi$ as follows:
+$$
+\pi \approx \frac{2L}{D \cdot \text{frequency of crossing}}
+$$
+
+
 \section{Page 107, Problem 6}
+
+The joint density function of $X, Y$ is
+
+$$
+f(x, y) = \begin{cases}
+\frac{1}{\pi ab} & \text{if } \frac{x^2}{a^2} + \frac{y^2}{b^2} < 1\\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+Thus the marginal density function of $X$ is
+\begin{align*}
+f_X(x) &= \int_{-\sqrt{b^2(1 - \frac{x^2}{a^2})}}^{\sqrt{b^2(1 - \frac{x^2}{a^2})}} f(x, y) \mathrm{d}y\\
+&= \int_{-\sqrt{b^2(1 - \frac{x^2}{a^2})}}^{\sqrt{b^2(1 - \frac{x^2}{a^2})}} \frac{1}{\pi ab} \mathrm{d}y\\
+&= \frac{2}{\pi a} \sqrt{1 - \frac{x^2}{a^2}}
+\end{align*}
+
+The marginal density function of $Y$ is
+\begin{align*}
+f_Y(y) &= \int_{-\sqrt{a^2(1 - \frac{y^2}{b^2})}}^{\sqrt{a^2(1 - \frac{y^2}{b^2})}} f(x, y) \mathrm{d}x\\
+&= \int_{-\sqrt{a^2(1 - \frac{y^2}{b^2})}}^{\sqrt{a^2(1 - \frac{y^2}{b^2})}} \frac{1}{\pi ab} \mathrm{d}x\\
+&= \frac{2}{\pi b} \sqrt{1 - \frac{y^2}{b^2}}
+\end{align*}
 
 \section{Page 107, Problem 7}
 
+The joint density function of $X$ and $Y$ is
+\begin{align*}
+f(x, y) = \frac{\partial^2 F(x,y)}{\partial x \partial y} = \alpha \beta e^{-\alpha x - \beta y}
+\end{align*}
+
+The marginal distribution function of $X$ is
+\begin{align*}
+F_X(x) = \lim_{y \to \infty} F(x, y) = 1 - e^{-\alpha x}
+\end{align*}
+
+Thus the marginal density function of $X$ is
+\begin{align*}
+f_X(x) = \frac{\mathrm{d}F_X(x)}{\mathrm{d}x} = \alpha e^{-\alpha x}
+\end{align*}
+
+Similarly, the marginal distribution function of $Y$ is
+\begin{align*}
+F_Y(y) = \lim_{x \to \infty} F(x, y) = 1 - e^{-\beta y}
+\end{align*}
+
+Thus the marginal density function of $Y$ is
+\begin{align*}
+f_Y(y) = \frac{\mathrm{d}F_Y(y)}{\mathrm{d}y} = \beta e^{-\beta y}
+\end{align*}
+
 \section{Page 107, Problem 8}
+
+\subsection{a)} 
+
+\paragraph{(i)} 
+
+\begin{align*}
+P(X > Y) &= \iint_{H} \frac{6}{7}(x + y)^2 \mathrm{d}x \mathrm{d}y, H = \{(x, y) | 0 \leq x \leq 1, 0 \leq y \leq 1, x > y\} \\
+         &= \int_{0}^1 \int_{0}^x \frac{6}{7}(x + y)^2 \mathrm{d}y \mathrm{d}x \\
+         &= \int_{0}^1 \frac{6}{7} \left(x^2 y + xy^2 + \frac{y^3}{3}\right) \Big|_{0}^{x} \mathrm{d}x \\
+         &= \int_{0}^1 \frac{6}{7} \left(x^3 + x^3 + \frac{x^3}{3}\right) \mathrm{d}x \\
+         &= \int_{0}^1 \frac{6}{7} \cdot \frac{7x^3}{3} \mathrm{d}x \\
+         &= \int_{0}^1 2x^3 \mathrm{d}x \\
+         &= \frac{1}{2}
+\end{align*}
+
+\paragraph{(ii)} 
+\begin{align*}
+P(X + Y \leq 1) &= \iint_{H} \frac{6}{7}(x + y)^2 \mathrm{d}x \mathrm{d}y, H = \{(x, y) | 0 \leq x \leq 1, 0 \leq y \leq 1, x \leq 1 - y\}\\ 
+&= \int_{0}^1 \int_{0}^{1-y} \frac{6}{7}(x + y)^2 \mathrm{d}x \mathrm{d}y\\
+&= \int_{0}^1 \frac{6}{7} \left( \frac{(x+y)^3}{3} \right) \Big|_{0}^{1-y} \mathrm{d}y\\
+&= \int_{0}^1 \frac{2}{7} \left( 1^3 - y^3 \right) \mathrm{d}y\\
+&= \frac{2}{7} \left( y - \frac{y^4}{4} \right) \Big|_{0}^1\\
+&= \frac{2}{7} \left( 1 - \frac{1}{4} \right)\\
+&= \frac{2}{7} \cdot \frac{3}{4}\\
+&= \frac{3}{14}
+\end{align*}
+
+\paragraph{(iii)} 
+\begin{align*}
+P(X \leq \frac{1}{2}) &= \iint_{H} \frac{6}{7}(x + y)^2 \mathrm{d}x \mathrm{d}y, H = \{(x, y) | 0 \leq x \leq 1, 0 \leq y \leq 1, x \leq \frac{1}{2}\}\\
+&= \int_{0}^1 \int_{0}^{\frac{1}{2}} \frac{6}{7}(x + y)^2 \mathrm{d}x \mathrm{d}y\\
+&= \int_{0}^1 \frac{6}{7} \left( \frac{(x+y)^3}{3} \right) \Big|_{0}^{\frac{1}{2}} \mathrm{d}y\\
+&= \int_{0}^1 \frac{2}{7} \left( \left(\frac{1}{2}+y\right)^3 - y^3 \right) \mathrm{d}y\\
+&= \frac{2}{7} \left( \frac{\left(\frac{1}{2}+y\right)^4}{4} - \frac{y^4}{4} \right) \Big|_{0}^1\\
+&= \frac{1}{14} \left( \left(\frac{3}{2}\right)^4 - \left(\frac{1}{2}\right)^4 - 1^4 + 0 \right)\\
+&= \frac{1}{14} \left( \frac{81}{16} - \frac{1}{16} - 1 \right)\\
+&= \frac{1}{14} \left( 5 - 1 \right)\\
+&= \frac{4}{14} = \frac{2}{7}
+\end{align*}
+
+\subsection{b)} 
+
+The marginal density function of $X$ is
+\begin{align*}
+f_X(x) = \int_0^1 \frac{6}{7}(x + y)^2 \mathrm{d}y = \frac{6}{7} \left(\frac{(x + 1)^3}{3} - \frac{x^3}{3}\right)
+\end{align*}
+
+Thus the marginal density function of $Y$ is
+\begin{align*}
+f_Y(y) = \int_0^1 f(x, y) \mathrm{d}x = \frac{6}{7} \left(\frac{(1 + y)^3}{3} - \frac{y^3}{3}\right)
+\end{align*}
 
 \section{Supplementary Problem 2.1}
 
+As $F(\infty, \infty) = 1$, thus $k = 1$.
+
+The marginal distribution function of $X$ is
+\begin{align*}
+F_X(x) = \lim_{y \to \infty} F(x, y) = 1 - e^{- x}
+\end{align*}
+
+The marginal distribution function of $Y$ is
+\begin{align*}
+F_Y(y) = \lim_{x \to \infty} F(x, y) = 1 - e^{- y}
+\end{align*}
+
+Thus the marginal density function of $X$ is
+\begin{align*}
+f_X(x) = \frac{\mathrm{d}F_X(x)}{\mathrm{d}x} = e^{- x}
+\end{align*}
+
+The marginal density function of $Y$ is
+\begin{align*}
+f_Y(y) = \frac{\mathrm{d}F_Y(y)}{\mathrm{d}y} = e^{- y}
+\end{align*}
+
+Then we may compute $P(1 < X < 3, 1 < Y < 2)$:
+\begin{align*}
+P(1 < X < 3, 1 < Y < 2) &= P(1 < X < 3) P(1 < Y < 2)\\
+&= (F_X(3) - F_X(1))(F_Y(2) - F_Y(1))\\
+&= ((1 - e^{-3}) - (1 - e^{-1}))((1 - e^{-2}) - (1 - e^{-1}))\\
+&= (e^{-1} - e^{-3})(e^{-1} - e^{-2})\\
+&= e^{-2} - e^{-3} - e^{-4} + e^{-5}
+\end{align*}
+
 \section{Supplementary Problem 2.2}
 
+\subsection{a)}
 
+The marginal density of $X$ is
+\begin{align*}
+f_X(x) = \int_{0}^1 x + y \mathrm{d}y = x + \frac{1}{2}
+\end{align*}
 
+The marginal density of $Y$ is
+\begin{align*}
+f_Y(y) = \int_{0}^1 x + y \mathrm{d}x = y + \frac{1}{2}
+\end{align*}
 
+\subsection{b)} 
+
+\begin{align*} 
+P(X > Y) &= \iint_{H}x + y \mathrm{d}x \mathrm{d}y, H = \{(x, y) | 0 \leq x \leq 1, 0 \leq y \leq 1, x > y\}\\
+&= \int_{0}^1 \int_{0}^x x + y \mathrm{d}y \mathrm{d}x\\
+&= \int_{0}^1 \left(xy + \frac{y^2}{2}\right) \Big|_{0}^x \mathrm{d}x\\
+&= \int_{0}^1 \left(x^2 + \frac{x^2}{2}\right) \mathrm{d}x\\
+&= \int_{0}^1 \frac{3}{2} x^2 \mathrm{d}x\\
+&= \frac{1}{2}
+\end{align*}
+
+\subsection{c)} 
+
+\begin{align*}
+P(X < 0.5) &= \iint_{H} x + y \mathrm{d}x \mathrm{d}y, H = \{(x, y) | 0 \leq x \leq 0.5, 0 \leq y \leq 1\}\\
+&= \int_{0}^{0.5} \int_{0}^1 x + y \mathrm{d}y \mathrm{d}x\\
+&= \int_{0}^{0.5} \left(xy + \frac{y^2}{2}\right) \Big|_{0}^1 \mathrm{d}x\\
+&= \int_{0}^{0.5} \left(x + \frac{1}{2}\right) \mathrm{d}x\\
+&= \left(\frac{x^2}{2} + \frac{x}{2}\right) \Big|_{0}^{0.5}\\
+&= \frac{1}{8} + \frac{1}{4}\\
+&= \frac{3}{8}
+\end{align*}
 
 \end{document}
