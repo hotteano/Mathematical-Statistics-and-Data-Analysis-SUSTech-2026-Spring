@@ -81,14 +81,14 @@ P(T_1 > 2T_2) &= \int_0^{\infty} \int_{2t_2}^{\infty} \alpha e^{-\alpha t_1} \be
 
 From the problem, we know that the probability is 
 \begin{align*}
-& P((X, Y) \in \triangle ABQ, 0 < Z < |BC|) = \iiint_{D} f(x, y, z) \mathrm{d}x \mathrm{d}y \mathrm{d}z, \\ & D = \{(x, y, z)|0 < x < 1, 0 < y < 1, 0 < z < 1, (x, y) \in \triangle ABQ, 0 < z < |BC|\} 
+& P((X, Y) \in \triangle ABQ, 0 < Z < |BC|) = \iiint_{D} f(x, y, z) \mathrm{d}x \mathrm{d}y \mathrm{d}z, \\ & D = \{(x, y, z)|(x, y) \in \triangle ABQ, 0 < z < |BC|\} 
 \end{align*}
 
-where $(X,Y)$ and $Z$ are independent, and $f(x, y, z) = f_{X}(x)f_{Y}(y)f_{Z}(z)$.
+where $(X,Y)$ and $Z$ are independent, and $f(x, y, z) = f_{XY}(x,y)f_{Z}(z)$.
 
 Thus we have 
 \begin{align*}
-P((X, Y) \in \triangle ABC, 0 < Z < |BC|) &= \iint_{(X,Y) \in \triangle ABQ} f_{X}(x)f_{Y}(y) \mathrm{d}x \mathrm{d}y \int_0^{|BC|} f_{Z}(z) \mathrm{d}z
+P((X, Y) \in \triangle ABQ, 0 < Z < |BC|) &= \int_0^{|BC|}\iint_{(X,Y) \in \triangle ABQ} f_{XY}(x,y) \mathrm{d}x \mathrm{d}y  f_{Z}(z) \mathrm{d}z
 \end{align*}
 
 The density function of $(X,Y), Z$ are 
@@ -108,21 +108,89 @@ $$
 
 Thus,
 \begin{align*}
-P((X, Y) \in \triangle ABQ, 0 < Z < |BC|) &= \iint_{(X,Y) \in \triangle ABQ} \frac{2}{|BC| \cdot h} \mathrm{d}x \mathrm{d}y \int_0^{|BC|} \frac{1}{|BC|} \mathrm{d}z\\
-&= \iint_{(X,Y) \in \triangle ABQ} \frac{2}{|BC| \cdot h} \mathrm{d}x \mathrm{d}y\\
+P((X, Y) \in \triangle ABQ, 0 < Z < |BC|) &= \int_0^{|BC|}\iint_{(X,Y) \in \triangle ABQ} \frac{2}{|BC| \cdot h} \mathrm{d}x \mathrm{d}y  \frac{1}{|BC|} \mathrm{d}z\\
+&= \int_0^{|BC|}\iint_{(X,Y) \in \triangle ABQ} \frac{2}{|BC|^2 \cdot h} \mathrm{d}x \mathrm{d}y\\
+&= \frac{2}{|BC|^2 h} \int_0^{|BC|}\iint_{(X,Y)\in \triangle_{ABQ}} \mathrm{d}x\mathrm{d}y\\
 &= \frac{2}{|BC|^2\cdot h} \int_{0}^{|BC|} \frac{1}{2}hz\mathrm{d}z\\
 &= \frac{1}{2}
 \end{align*}
 
-
-
-
-
-
-
 \section{Supplementary Problem 2}
 
+\subsection{a)}
+
+With replacement, $X$ follows the binomial distribution $B(2, \frac{2}{5})$, and $Y = 2 - X$ is the number of black balls. The joint frequency function is
+$$
+P(X = x, Y = y) = \begin{cases}
+\displaystyle \binom{2}{x}\left(\frac{2}{5}\right)^{x}\left(\frac{3}{5}\right)^{y}, & x, y \in \{0, 1, 2\},\; x + y = 2 \\[8pt]
+0, & \text{otherwise}
+\end{cases}
+$$
+
+Thus, the marginal frequency function of $X$ is
+$$
+P(X = x) = \binom{2}{x}\left(\frac{2}{5}\right)^{x}\left(\frac{3}{5}\right)^{2 - x}, \quad x = 0, 1, 2,
+$$
+
+and the marginal frequency function of $Y$ is
+$$
+P(Y = y) = \binom{2}{y}\left(\frac{3}{5}\right)^{y}\left(\frac{2}{5}\right)^{2 - y}, \quad y = 0, 1, 2.
+$$
+
+\subsection{b)}
+
+Without replacement, $X$ follows the hypergeometric distribution. The joint frequency function is
+$$
+P(X = x, Y = y) = \begin{cases}
+\displaystyle \frac{\binom{2}{x}\binom{3}{y}}{\binom{5}{2}}, & x, y \in \{0, 1, 2\},\; x + y = 2 \\[8pt]
+0, & \text{otherwise}
+\end{cases}
+$$
+
+Thus, the marginal frequency function of $X$ is
+$$
+P(X = x) = \frac{\binom{2}{x}\binom{3}{2 - x}}{\binom{5}{2}}, \quad x = 0, 1, 2,
+$$
+
+and the marginal frequency function of $Y$ is
+$$
+P(Y = y) = \frac{\binom{2}{2 - y}\binom{3}{y}}{\binom{5}{2}}, \quad y = 0, 1, 2.
+$$
+
+$X$ and $Y$ are \textbf{not independent} in either case, because $X + Y = 2$ always implies $Y = 2 - X$ deterministically (for example, $P(X = 2, Y = 2) = 0 \neq P(X = 2)P(Y = 2)$).
+
 \section{Supplementary Problem 3}
+
+\subsection{a)} 
+
+From the definition we know that 
+$$
+c = \frac{1}{\pi R^2}
+$$
+
+The marginal density function of $X$ is
+$$
+\int_{-\infty}^{\infty} f(x, y) \mathrm{d}y = \int_{-\sqrt{R^2 - x^2}}^{\sqrt{R^2 - x^2}} \frac{1}{\pi R^2} \mathrm{d}y = \frac{2\sqrt{R^2 - x^2}}{\pi R^2}, \quad -R < x < R
+$$
+
+The marginal density function of $Y$ is
+$$
+\int_{-\infty}^{\infty} f(x, y) \mathrm{d}x = \int_{-\sqrt{R^2 - y^2}}^{\sqrt{R^2 - y^2}} \frac{1}{\pi R^2} \mathrm{d}x = \frac{2\sqrt{R^2 - y^2}}{\pi R^2}, \quad -R < y < R
+$$
+
+\subsection{b)} 
+
+Now let us check that whether $X$ and $Y$ are independent. We have
+\begin{align*}
+f_X(x)f_Y(y) &= \frac{4\sqrt{(R^2 - x^2)(R^2 - y^2)}}{\pi^2 R^4}
+\end{align*}
+
+Notice that 
+$$
+\frac{f_X(x)f_Y(y)}{f(x,y)} = \frac{4\sqrt{(R^2 - x^2)(R^2 - y^2)}}{\pi R^2} \neq 1
+$$
+
+Thus $X$ and $Y$ are \textbf{not independent}.
 
 
 \end{document}
