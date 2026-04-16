@@ -1,0 +1,128 @@
+\documentclass[a4paper, UTF-8]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\theoremstyle{plain}
+\newtheorem{theorem}{\indent Theorem}[section]
+\newtheorem{lemma}[theorem]{\indent Lemma}
+\newtheorem{assumption}{\indent Assumption}[section]
+\newtheorem{note}[theorem]{\indent Notation}
+\newtheorem{proposition}[theorem]{\indent Proposition}
+\newtheorem{corollary}[theorem]{\indent Corollary}
+\newtheorem{definition}{\indent Definition}[section]
+\newtheorem{example}{\indent Example}[section]
+\newtheorem{remark}{\indent Remark}[section]
+\newenvironment{solution}{\begin{proof}[\indent\bf Solution]}{\end{proof}}
+\renewcommand{\proofname}{\indent\bf Proof}
+
+\begin{document}
+
+\title{Assignment 8}
+
+\author{Yanqiao Chen\\ 
+  Department of Computer Science and Engineering\\
+  Southern University of Science and Technology\\
+  \texttt{12412115@mail.sustech.edu.cn}
+  }
+
+
+\maketitle
+
+\section{Page 109, Problem 19}
+
+From the problem we know that $T_1 \sim E(\alpha), T_2 \sim E(\beta)$, and $f(t_1,t_2) = f_{T_1}(t_1)f_{T_2}(t_2)$. 
+
+\subsection{a)} 
+
+Thus, 
+$$
+P(T_1 > T_2) = \iint_{D} f(t_1, t_2) \mathrm{d}t_1 \mathrm{d}t_2, D = \{(t_1, t_2)|t_1, t_2 > 0, t_1 > t_2\}
+$$
+
+We compute the integral as follows: 
+\begin{align*} 
+P(T_1 > T_2) &= \int_0^{\infty} \int_{t_2}^{\infty} \alpha e^{-\alpha t_1} \beta e^{-\beta t_2} \mathrm{d}t_1 \mathrm{d}t_2\\
+&= \int_0^{\infty} \beta e^{-\beta t_2} \int_{t_2}^{\infty} \alpha e^{-\alpha t_1} \mathrm{d}t_1 \mathrm{d}t_2\\
+&= \int_0^{\infty} \beta e^{-\beta t_2} e^{-\alpha t_2} \mathrm{d}t_2\\
+&= \int_0^{\infty} \beta e^{-(\alpha + \beta) t_2} \mathrm{d}t_2\\
+&= \frac{\beta}{\alpha + \beta}
+\end{align*}
+
+\subsection{b)} 
+
+Thus, 
+$$
+P(T_1 > 2T_2) = \iint_{D} f(t_1, t_2) \mathrm{d}t_1 \mathrm{d}t_2, D = \{(t_1, t_2)|t_1, t_2 > 0, t_1 > 2t_2\}
+$$
+
+We compute the integral as follows:
+\begin{align*}
+P(T_1 > 2T_2) &= \int_0^{\infty} \int_{2t_2}^{\infty} \alpha e^{-\alpha t_1} \beta e^{-\beta t_2} \mathrm{d}t_1 \mathrm{d}t_2\\
+&= \int_0^{\infty} \beta e^{-\beta t_2} \int_{2t_2}^{\infty} \alpha e^{-\alpha t_1} \mathrm{d}t_1 \mathrm{d}t_2\\
+&= \int_0^{\infty} \beta e^{-\beta t_2} e^{-2\alpha t_2} \mathrm{d}t_2\\
+&= \int_0^{\infty} \beta e^{-(2\alpha + \beta) t_2} \mathrm{d}t_2\\
+&= \frac{\beta}{2\alpha + \beta}
+\end{align*}
+
+\section{Supplementary Problem 1}
+
+From the problem, we know that the probability is 
+\begin{align*}
+& P((X, Y) \in \triangle ABQ, 0 < Z < |BC|) = \iiint_{D} f(x, y, z) \mathrm{d}x \mathrm{d}y \mathrm{d}z, \\ & D = \{(x, y, z)|0 < x < 1, 0 < y < 1, 0 < z < 1, (x, y) \in \triangle ABQ, 0 < z < |BC|\} 
+\end{align*}
+
+where $(X,Y)$ and $Z$ are independent, and $f(x, y, z) = f_{X}(x)f_{Y}(y)f_{Z}(z)$.
+
+Thus we have 
+\begin{align*}
+P((X, Y) \in \triangle ABC, 0 < Z < |BC|) &= \iint_{(X,Y) \in \triangle ABQ} f_{X}(x)f_{Y}(y) \mathrm{d}x \mathrm{d}y \int_0^{|BC|} f_{Z}(z) \mathrm{d}z
+\end{align*}
+
+The density function of $(X,Y), Z$ are 
+$$
+f(x,y) = \begin{cases}
+\frac{2}{|BC| \cdot h}, & (x,y) \in \triangle ABC\\
+0, & \text{otherwise}
+\end{cases}
+$$
+and 
+$$
+f(z) = \begin{cases}
+\frac{1}{|BC|}, & 0 < z < |BC|\\
+0, & \text{otherwise}
+\end{cases}
+$$
+
+Thus,
+\begin{align*}
+P((X, Y) \in \triangle ABQ, 0 < Z < |BC|) &= \iint_{(X,Y) \in \triangle ABQ} \frac{2}{|BC| \cdot h} \mathrm{d}x \mathrm{d}y \int_0^{|BC|} \frac{1}{|BC|} \mathrm{d}z\\
+&= \iint_{(X,Y) \in \triangle ABQ} \frac{2}{|BC| \cdot h} \mathrm{d}x \mathrm{d}y\\
+&= \frac{2}{|BC|^2\cdot h} \int_{0}^{|BC|} \frac{1}{2}hz\mathrm{d}z\\
+&= \frac{1}{2}
+\end{align*}
+
+
+
+
+
+
+
+\section{Supplementary Problem 2}
+
+\section{Supplementary Problem 3}
+
+
+\end{document}
