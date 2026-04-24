@@ -1,0 +1,533 @@
+\documentclass[a4paper, UTF-8]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\theoremstyle{plain}
+\newtheorem{theorem}{\indent Theorem}[section]
+\newtheorem{lemma}[theorem]{\indent Lemma}
+\newtheorem{assumption}{\indent Assumption}[section]
+\newtheorem{note}[theorem]{\indent Notation}
+\newtheorem{proposition}[theorem]{\indent Proposition}
+\newtheorem{corollary}[theorem]{\indent Corollary}
+\newtheorem{definition}{\indent Definition}[section]
+\newtheorem{example}{\indent Example}[section]
+\newtheorem{remark}{\indent Remark}[section]
+\newenvironment{solution}{\begin{proof}[\indent\bf Solution]}{\end{proof}}
+\renewcommand{\proofname}{\indent\bf Proof}
+
+\begin{document}
+
+\title{\textbf{Assignment 9}}
+
+\author{Yanqiao Chen\\ 
+  Department of Computer Science and Engineering\\
+  Southern University of Science and Technology\\
+  \texttt{12412115@mail.sustech.edu.cn}
+  }
+
+
+\maketitle
+
+\section{Page 107, Problem 1}
+
+\subsection{a)} 
+
+The marginal frequency of $X$ is
+\begin{align*} 
+F(X = 1) = 0.1 + 0.05 + 0.02 + 0.02 = 0.19\\
+F(X = 2) = 0.05 + 0.2 + 0.05 + 0.02 = 0.32\\
+F(X = 3) = 0.02 + 0.05 + 0.2 + 0.04 = 0.31\\
+F(X = 4) = 0.02 + 0.02 + 0.04 + 0.1 = 0.18\\
+\end{align*}
+
+The marginal frequency of $Y$ is
+\begin{align*}
+F(Y = 1) = 0.1 + 0.05 + 0.02 + 0.02 = 0.19\\
+F(Y = 2) = 0.05 + 0.2 + 0.05 + 0.02 = 0.32\\
+F(Y = 3) = 0.02 + 0.05 + 0.2 + 0.04 = 0.31\\
+F(Y = 4) = 0.02 + 0.02 + 0.04 + 0.1 = 0.18\\
+\end{align*}
+
+\subsection{b)} 
+
+The conditional frequency of $X$ given $Y = 1$ is
+\begin{align*}
+F(X = 1|Y = 1) = \frac{0.1}{0.19} \approx 0.5263\\
+F(X = 2|Y = 1) = \frac{0.05}{0.19} \approx 0.2632\\
+F(X = 3|Y = 1) = \frac{0.02}{0.19} \approx 0.1053\\
+F(X = 4|Y = 1) = \frac{0.02}{0.19} \approx 0.1053\\
+\end{align*}
+
+The conditional frequency of $Y$ given $X = 1$ is
+\begin{align*}
+F(Y = 1|X = 1) = \frac{0.1}{0.19} \approx 0.5263\\
+F(Y = 2|X = 1) = \frac{0.05}{0.19} \approx 0.2632\\
+F(Y = 3|X = 1) = \frac{0.02}{0.19} \approx 0.1053\\
+F(Y = 4|X = 1) = \frac{0.02}{0.19} \approx 0.1053\\
+\end{align*}
+
+\section{Page 107, Problem 9} 
+
+\subsection{a)} 
+
+The area is 
+$$
+\int_{-1}^1 (1 - x^2) \mathrm{d}x = x - \frac{x^3}{3} \Big|_{-1}^1 = \frac{4}{3}
+$$
+
+Thus the density function is
+$$
+f(x) = \begin{cases}
+\frac{3}{4} & , (x,y) \in D \\ 
+0 & , \text{otherwise} \\
+\end{cases}
+$$
+
+Thus the marginal density function of $X$ is
+$$
+f_X(x) = \int_{0}^{1-x^2} f(x,y) \mathrm{d}y  
+$$
+which is 
+$$
+f_X(x) = \begin{cases} 
+\frac{3}{4(1-x^2)}&, -1 < x < 1\\
+0&, \text{otherwise}
+\end{cases}
+$$
+
+Thus the marginal density function of $Y$ is
+$$
+f_Y(y) = \int_{-\sqrt{1-y}}^{\sqrt{1-y}} f(x,y) \mathrm{d}x
+$$
+which is
+$$
+f_Y(y) = \begin{cases}
+\frac{3\sqrt{1-y}}{2} &, 0 < y < 1\\
+0 &, \text{otherwise}
+\end{cases}
+$$
+
+\subsection{b)} 
+
+The conditional density function of $X$ given $Y = y$ is
+$$
+f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} = \begin{cases}
+\frac{1}{2\sqrt{1-y}} &, -\sqrt{1-y} < x < \sqrt{1-y}\\
+0 &, \text{otherwise}
+\end{cases}
+$$
+
+The conditional density function of $Y$ given $X = x$ is
+$$
+f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} = \begin{cases}
+\frac{1-x^2}{1-x^2} = 1 &, 0 < y < 1-x^2\\
+0 &, \text{otherwise}
+\end{cases}
+$$
+
+\section{Page 107, Problem 14} 
+
+\subsection{a)} 
+
+The marginal density function of $X$ is
+$$
+f_X(x) = \int_{0}^\infty f(x,y) \mathrm{d}y = \int_{0}^\infty xe^{-x(y+1)} \mathrm{d}y = -e^{-x(y + 1)} \big|_{0}^\infty = e^{-x}, \quad x > 0
+$$
+
+The marginal density function of $Y$ is
+$$
+f_Y(y) = \int_{0}^\infty f(x,y) \mathrm{d}x = \int_{0}^\infty xe^{-x(y+1)} \mathrm{d}x = -\frac{x}{(y+1)}e^{-x(y+1)}\big|_{0}^\infty + \int_{0}^\infty \frac{1}{y+1}e^{-x(y+1)} \mathrm{d}x\, \quad y > 0
+$$
+Thus it will be 
+$$
+f_Y(y) = \frac{1}{(y+1)^2} , \quad y > 0
+$$
+
+\subsection{b)} 
+
+The conditional density function of $X$ given $Y = y$ is
+$$
+f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} = \frac{xe^{-x(y+1)}}{\frac{1}{(y+1)^2}} = (y + 1)^2 xe^{-x(y+1)}, \quad x > 0
+$$
+
+The conditional density function of $Y$ given $X = x$ is
+$$
+f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} = \frac{xe^{-x(y+1)}}{e^{-x}} = xe^{-xy}, \quad y > 0
+$$
+
+\section{Page 107, Problem 15} 
+
+\subsection{a)} 
+
+From 
+$$
+\iint_{x^2 + y^2 < 1} c\sqrt{1 - x^2 - y^2  } \mathrm{d}x \mathrm{d}y = 1
+$$
+
+substituting $r^2 = x^2 + y^2$ and $\theta \in [0, 2\pi]$ we have 
+$$
+c \int_{0}^{2\pi} \int_{0}^1 \sqrt{1 - r^2} r \mathrm{d}r \mathrm{d}\theta = 1
+$$
+
+Thus we have
+$$
+\frac{c}{2} \int_{0}^{2\pi} \int_{0}^1 \sqrt{1 - t} \mathrm{d}r \mathrm{d}\theta = c\pi (-\frac{2}{3}(1 - t)^{\frac{3}{2}} \big|_{0}^1)= \frac{2c\pi}{3} =  1
+$$
+
+Then $c = \frac{3}{2\pi}$.
+
+\subsection{b)} 
+
+We sketch the density function as follows:
+% placeholder for the sketch
+
+\subsection{c)} 
+
+The $P(X^2 + Y^2 \leq \frac{1}{2})$ is 
+$$
+\frac{c}{2} \int_{0}^{2\pi} \int_{0}^\frac{1}{2} \sqrt{1 - t} \mathrm{d}r \mathrm{d}\theta = (-(1 - t)^{\frac{3}{2}} \big|_{0}^\frac{1}{2}) = 1 - \left(\frac{1}{2}\right)^{\frac{3}{2}} = 1 - \frac{\sqrt{2}}{4}
+$$
+
+
+
+\subsection{d)} 
+
+The marginal density function of $X$ is
+$$
+f_X(x) = \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{3}{2\pi}\sqrt{1 - x^2 - y^2} \mathrm{d}y, \quad -1 < x < 1
+$$
+
+Let $y = (1-x^2)\sin \theta$, then we have
+$$
+\sqrt{(1-x^2)(1-\sin^2 \theta)} = \sqrt{(1-x^2)\cos^2 \theta} = \sqrt{1-x^2}\cos \theta
+$$
+
+Then 
+$$
+\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\sqrt{1-x^2}\cos \theta (1-x^2)\cos \theta \mathrm{d}\theta = (1-x^2)^{\frac{3}{2}} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos^2 \theta \mathrm{d}\theta = (1-x^2)^{\frac{3}{2}} \frac{\pi}{2} 
+$$
+
+Thus the marginal density function of $X$ is
+$$
+f_X(x) = \frac{3}{4}(1-x^2)^{\frac{3}{2}}, \quad -1 < x < 1
+$$
+
+Similarly, the marginal density function of $Y$ is
+$$
+f_Y(y) = \frac{3}{4}(1-y^2)^{\frac{3}{2}}, \quad -1 < y < 1
+$$
+
+\subsection{e)} 
+
+The conditional density function of $X$ given $Y = y$ is
+$$
+f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} = \frac{\frac{3}{2\pi}\sqrt{1-x^2-y^2}}{\frac{3}{4}(1-y^2)^{\frac{3}{2}}} = \frac{2}{\pi}\frac{\sqrt{1-x^2-y^2}}{(1-y^2)^{\frac{3}{2}}}, \quad -\sqrt{1-y^2} < x < \sqrt{1-y^2}
+$$
+
+The conditional density function of $Y$ given $X = x$ is
+$$
+f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} = \frac{\frac{3}{2\pi}\sqrt{1-x^2-y^2}}{\frac{3}{4}(1-x^2)^{\frac{3}{2}}} = \frac{2}{\pi}\frac{\sqrt{1-x^2-y^2}}{(1-x^2)^{\frac{3}{2}}}, \quad -\sqrt{1-x^2} < y < \sqrt{1-x^2}
+$$
+
+\section{Supplementary Problem 1.1} 
+
+\subsection{a)} 
+
+As $X \sim U(0, 1)$, and $Y \sim U(0, x)$, thus the joint density will be 
+$$
+f(x,y) = \begin{cases} 
+f_{y|x}(Y|X)f_{X}(x) = \frac{1}{x} \cdot 1 = \frac{1}{x} &, 0 < y < x < 1\\
+0 &, \text{otherwise}
+\end{cases}
+$$
+
+\subsection{b)} 
+
+The marginal density function of $Y$ is 
+$$
+f_Y(y) = \int_{y}^1 f(x,y) \mathrm{d}x = \int_{y}^1 \frac{1}{x} \mathrm{d}x = -\ln y, \quad 0 < y < 1
+$$
+
+\subsection{c)} 
+
+$P(X + Y > 1)$ is 
+$$
+\int_{\frac{1}{2}}^1 \int_{1-x}^x \frac{1}{x} \mathrm{d}y \mathrm{d}x = \int_{\frac{1}{2}}^1 \frac{2x - 1}{x} \mathrm{d}x = 2\int_{\frac{1}{2}}^1 \mathrm{d}x - \int_{\frac{1}{2}}^1 \frac{1}{x} \mathrm{d}x = 1 - (0 - \ln \frac{1}{2}) = 1 + \ln \frac{1}{2} = 1 - \ln 2
+$$
+
+\section{Supplementary Problem 1.2} 
+
+\subsection{a)}
+
+The marginal density function of $X$ is
+$$
+\int_{x}^\infty e^{-y} \mathrm{d}y = e^{-x}, \quad x > 0
+$$
+
+The marginal density function of $Y$ is
+$$
+\int_{0}^y e^{-y} \mathrm{d}x = ye^{-y}, \quad y > 0
+$$
+
+Thus 
+$$
+f_X(x)f_Y(y) = ye^{-x-y} \ne f(x,y) = e^{-y}, \quad 0 < x < y
+$$
+
+Then $X$ and $Y$ are not independent.
+
+\subsection{b)} 
+
+The conditional density function of $X$ given $Y = y$ is
+$$
+f_{X|Y}(x|y) = \frac{f(x,y)}{f_Y(y)} = \frac{e^{-y}}{ye^{-y}} = \frac{1}{y}, \quad 0 < x < y
+$$
+
+The conditional density function of $Y$ given $X = x$ is
+$$
+f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} = \frac{e^{-y}}{e^{-x}} = e^{-(y-x)}, \quad y > x
+$$
+
+\section{Page 112, Problem 43}
+
+Given that $U_1, U_2 \sim U(0, 1)$
+
+The joint density function of $U_1$ and $U_2$ is
+$$
+f(x,y) = \begin{cases}
+1 &, 0 < x < 1, 0 < y < 1\\
+0 &, \text{otherwise}
+\end{cases}
+$$
+
+$$
+P(U_1 + U_2 \leq x) = \iint_{u_1 + u_2 \leq x} f(u_1, u_2) \mathrm{d}u_1 \mathrm{d}u_2
+$$
+
+Thus 
+
+\begin{align*} 
+P(U_1 + U_2 \leq x) &= \int_{0}^x \int_{0}^{x-u_1} 1 \mathrm{d}u_2 \mathrm{d}u_1\\
+&= \int_{0}^x (x-u_1) \mathrm{d}u_1\\
+&= \int_{0}^x x \mathrm{d}u_1 - \int_{0}^x u_1 \mathrm{d}u_1\\
+&= x^2 - \frac{x^2}{2} = \frac{x^2}{2}
+\end{align*}
+
+Thus the density function of $F_S(x)$ will be 
+$$
+f(x) = \begin{cases} 
+x , \quad 0 < x < 2 \\ 
+0 , \quad \text{otherwise} 
+\end{cases}
+$$
+
+\section{Page 112, Problem 44}
+
+Given that $N_1 \sim P(\lambda_1), N_2 \sim P(\lambda_2)$ independently, then the joint frequency function of $N_1$ and $N_2$ is
+$$
+P(N_1 = n_1, N_2 = n_2) = \frac{\lambda_1^{n_1}e^{-\lambda_1}}{n_1!} \cdot \frac{\lambda_2^{n_2}e^{-\lambda_2}}{n_2!} = \frac{\lambda_1^{n_1}\lambda_2^{n_2}e^{-(\lambda_1 + \lambda_2)}}{n_1! n_2!}
+$$
+
+Thus, the frequecy function of $N_1 + N_2$ is
+\begin{align*}
+F(n) = P(N_1 + N_2 = n) &= \sum_{n_1 = 0}^n \frac{\lambda_1^{n_1}\lambda_2^{n - n_1}e^{-(\lambda_1 + \lambda_2)}}{n_1! (n-n_1)!} \\ 
+&= e^{-(\lambda_1 + \lambda_2)} \sum_{n_1 = 0}^n  \frac{\lambda_1^{n_1}}{n_1!} \cdot \frac{\lambda_2^{n - n_1}}{(n - n_1)!}
+\end{align*}
+
+Notice that 
+$$
+\frac{1}{n_1!(n - n_1)!} = \binom{n}{n_1} \frac{1}{n!}
+$$
+
+Thus we multiply the fraction by $\frac{n!}{n!}$, then we have
+\begin{align*}
+P(N_1 + N_2 = n) &= e^{-(\lambda_1 + \lambda_2)} \sum_{n_1 = 0}^n \binom{n}{n_1} \frac{\lambda_1^{n_1}\lambda_2^{n - n_1}}{n!} 
+\end{align*}
+
+From the binomial expansion, we have
+$$
+\sum_{n_1 = 0}^n \binom{n}{n_1} \lambda_1^{n_1}\lambda_2^{n - n_1} = (\lambda_1 + \lambda_2)^n
+$$
+
+Thus 
+$$
+P(N_1 + N_2 = n) = e^{-(\lambda_1 + \lambda_2)} \frac{(\lambda_1 + \lambda_2)^n}{n!}
+$$
+
+which completes the proof.
+
+\section{Page 112, Problem 51}
+
+The probability of for $Z = XY$ is 
+$$
+P(Z \leq z) = P(XY \leq z)
+$$
+
+If $Y > 0$, then $P(XY \leq z) = P(X \leq \frac{z}{y})$. If $Y < 0$, then $P(XY \leq z) = P(X \geq \frac{z}{y})$.
+
+The marginal density function for $X$ is 
+$$
+f_X(x) = \int_{-\infty}^\infty f(x,y) \mathrm{d}y
+$$
+
+For $Y > 0$, then $P(Z \leq z) = P(X \leq \frac{z}{y})$, thus 
+$$
+f_Z(z) = \frac{1}{y} f_X(\frac{z}{y}) = \int_{-\infty}^\infty \frac{1}{y} f(\frac{z}{y}, y) \mathrm{d}y
+$$
+
+For $Y < 0$, then $P(Z \leq z) = P(X \geq \frac{z}{y})$, thus
+$$
+f_Z(z) = -\frac{1}{y} f_X(\frac{z}{y}) = -\int_{-\infty}^\infty \frac{1}{y} f(\frac{z}{y}, y) \mathrm{d}y
+$$
+
+Then the density function of $Z$ is
+$$
+f_Z(z) = \int_{-\infty}^\infty f(y, \frac{z}{y}) \frac{1}{|y|} \mathrm{d}y
+$$
+
+which completes the whole proof.
+
+\section{Page 112, Problem 52}
+
+Let $Z = \frac{X}{Y}$, the marginal density function of $X$ is 
+$$
+f_X(x) = \int_{-\infty}^\infty f(x,y) \mathrm{d}y
+$$
+
+For $Y > 0$, then $P(Z \leq z) = P(X \leq zy)$, thus
+$$
+f_Z(z) = \frac{1}{y} f_X(zy) = \int_{-\infty}^\infty \frac{1}{y} f(zy, y) \mathrm{d}y
+$$
+For $Y < 0$, then $P(Z \leq z) = P(X \geq zy)$, thus
+$$
+f_Z(z) = -\frac{1}{y} f_X(zy) = -\int_{-\infty}^\infty \frac{1}{y} f(zy, y) \mathrm{d}y
+$$
+
+Thus the density function of $Z$ is
+$$
+f_Z(z) = \int_{-\infty}^\infty f(zy, y) \frac{1}{|y|} \mathrm{d}y
+$$
+
+Notice that $X$ and $Y$ are independent where $X, Y \sim U(a, b)$, thus we have
+$$
+f_Z(z) = \int_{-\infty}^\infty f_X(zy)f_Y(y) \frac{1}{|y|} \mathrm{d}y
+$$
+
+Then the density function of $Z$ is
+\begin{align*} 
+f_Z(z) &= \int_{a}^b \frac{1}{b-a} \cdot \frac{1}{b-a} \cdot \frac{1}{|y|} \mathrm{d}y = \frac{1}{(b-a)^2} \int_{a}^b \frac{1}{|y|} \mathrm{d}y \\ 
+&= \frac{1}{(b - a)^2} \int_{a}^b \frac{1}{|y|} \mathrm{d}y
+\end{align*}
+
+We discuss case1: $a > 0$, case2: $a < 0, b > 0$, case3: $b < 0$.
+
+For case1, we have
+$$
+f_Z(z) = \frac{1}{(b-a)^2} \int_{a}^b \frac{1}{y} \mathrm{d}y = \frac{1}{(b-a)^2} (\ln b - \ln a) = \frac{\ln b - \ln a}{(b-a)^2}
+$$
+
+For case2, we have
+$$
+f_Z(z) = \frac{1}{(b-a)^2} \int_{a}^0 \frac{1}{-y} \mathrm{d}y + \frac{1}{(b-a)^2} \int_{0}^b \frac{1}{y} \mathrm{d}y = \frac{1}{(b-a)^2} (\ln b - \ln (-a)) = \frac{\ln b - \ln (-a)}{(b-a)^2}
+$$
+
+For case3, we have
+$$
+f_Z(z) = \frac{1}{(b-a)^2} \int_{a}^b \frac{1}{-y} \mathrm{d}y = \frac{1}{(b-a)^2} (\ln (-a) - \ln (-b)) = \frac{\ln (-a) - \ln (-b)}{(b-a)^2}
+$$
+
+Thus we can write them as: 
+$$
+f_Z(z) = \frac{\ln|a| - \ln|b|}{(b - a)^2}
+$$
+
+
+\section{Page 112, Problem 57}
+
+The density function of $Y_1$ is 
+$$
+f_{Y_1}(y_1) = \frac{1}{\sqrt{2\pi}}e^{-\frac{y_1^2}{2}}
+$$
+
+The density function of $Y_2$ is
+$$
+f_{Y_2}(y_2) = \frac{1}{\sqrt{4\pi}}e^{-\frac{y_2^2}{4}}
+$$
+
+We would like to find a linear transformation 
+$$
+\begin{bmatrix} 
+a_{11} & a_{12} \\ 
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+Y_1 \\
+Y_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_1 \\
+X_2
+\end{bmatrix}
+$$
+
+Such that $X_1$ and $X_2$ are independent and they are standard normal variables.
+
+From the marginal densities, we have $\mu_1 = 0$, $\mu_2 = 0$, $\sigma_1^2 = 1$, and $\sigma_2^2 = 2$. The cross-term coefficient $\sqrt{2}$ in the variance expansion implies the correlation coefficient is $\rho = \frac{\sqrt{2}}{2}$, since $2\rho\sigma_1\sigma_2 = \sqrt{2}$. Thus the covariance matrix of $(Y_1, Y_2)$ is
+$$
+\Sigma = \begin{bmatrix} \sigma_1^2 & \rho\sigma_1\sigma_2 \\ \rho\sigma_1\sigma_2 & \sigma_2^2 \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix}.
+$$
+
+Let the linear transformation be $\mathbf{X} = A\mathbf{Y}$ where $A = \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}$. Then $\mathbf{X} \sim N(\mathbf{0}, A\Sigma A^T)$. For $X_1$ and $X_2$ to be independent standard normal variables, we require
+$$
+A\Sigma A^T = I.
+$$
+
+Equivalently, $A$ can be taken as $\Sigma^{-1/2}$. We find $A$ by Cholesky decomposition of $\Sigma$. Write $\Sigma = RR^T$ where $R$ is lower triangular:
+$$
+\begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}.
+$$
+
+Taking $A = R^{-1}$ yields
+$$
+A = \begin{bmatrix} 1 & 0 \\ -1 & 1 \end{bmatrix}.
+$$
+
+We verify directly:
+$$
+A\Sigma A^T = \begin{bmatrix} 1 & 0 \\ -1 & 1 \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix} \begin{bmatrix} 1 & -1 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & -1 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}.
+$$
+
+Therefore, one such linear transformation is
+$$
+\boxed{\begin{bmatrix} X_1 \\ X_2 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ -1 & 1 \end{bmatrix} \begin{bmatrix} Y_1 \\ Y_2 \end{bmatrix}},
+$$
+that is,
+$$
+X_1 = Y_1, \quad X_2 = Y_2 - Y_1.
+$$
+
+\section{Supplementary Problem 2.1} 
+
+\section{Supplementary Problem 2.2} 
+
+\section{Page 114, Problem 72}
+
+\section{Supplementary Problem 3.1} 
+
+\section{Supplementary Problem 3.2} 
+
+\end{document}
