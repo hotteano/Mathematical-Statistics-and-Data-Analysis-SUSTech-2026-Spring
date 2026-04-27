@@ -522,12 +522,161 @@ $$
 
 \section{Supplementary Problem 2.1} 
 
+\subsection{a)} 
+
+Given that independent variable $X, Y \sim N(0, 1)$, the joint density function of $X$ and $Y$ is
+$$
+f(x,y) = \frac{1}{2\pi}e^{-\frac{x^2 + y^2}{2}}
+$$
+
+From the linear transformation 
+$$
+\begin{cases} 
+U = X + Y\\
+V = X - Y
+\end{cases}
+$$
+
+Thus 
+$$
+\begin{cases} 
+X = \frac{U + V}{2}\\
+Y = \frac{U - V}{2}
+\end{cases}
+$$
+
+The Jacobian of the transformation is
+$$
+J = \begin{bmatrix} \frac{\partial X}{\partial U} & \frac{\partial X}{\partial V} \\ \frac{\partial Y}{\partial U} & \frac{\partial Y}{\partial V} \end{bmatrix} = \begin{bmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & -\frac{1}{2} \end{bmatrix}
+$$
+
+Thus we obtain the joint density function of $U$ and $V$ as
+\begin{align*}
+f_{U, V}(u,v) &= f_{X,Y}(\frac{u + v}{2},\frac{u - v}{2}) \cdot |J|\\
+&= \frac{1}{2\pi}e^{-\frac{(\frac{u + v}{2})^2 + (\frac{u - v}{2})^2}{2}} \cdot \frac{1}{2}\\
+&= \frac{1}{4\pi}e^{-\frac{u^2 + v^2}{4}}
+\end{align*}
+
+The marginal density function of $U$ is
+$$
+f_U(u) = \int_{-\infty}^\infty f_{U, V}(u,v) \mathrm{d}v = \int_{-\infty}^\infty \frac{1}{4\pi}e^{-\frac{u^2 + v^2}{4}} \mathrm{d}v = \frac{1}{2\sqrt{\pi}}e^{-\frac{u^2}{4}}
+$$
+
+The marginal density function of $V$ is
+$$
+f_V(v) = \int_{-\infty}^\infty f_{U, V}(u,v) \mathrm{d}u = \int_{-\infty}^\infty \frac{1}{4\pi}e^{-\frac{u^2 + v^2}{4}} \mathrm{d}u = \frac{1}{2\sqrt{\pi}}e^{-\frac{v^2}{4}}
+$$
+
+\subsection{b)} 
+
+From 
+$$
+f_{U, V}(u, v) = \frac{1}{4\pi}e^{-\frac{u^2 + v^2}{4}} = \frac{1}{2\sqrt{\pi}}e^{-\frac{u^2}{4}} \cdot \frac{1}{2\sqrt{\pi}}e^{-\frac{v^2}{4}} = f_U(u)f_V(v)
+$$
+
+Thus $U$ and $V$ are independent.
+
 \section{Supplementary Problem 2.2} 
+
+\subsection{a)}
+
+The marginal density function of $X$ is 
+$$
+f_X(x) = \int_{0}^{2x} 1 \mathrm{dy} = 2x
+$$
+
+The marginal density function of $Y$ is 
+$$
+f_Y(y) = \int_{\frac{y}{2}}^1 1 \mathrm{dx} = 1 - \frac{y}{2}
+$$
+
+\subsection{b)} 
+
+The density function of $Z = 2X - Y$ is
+$$
+f_Z(z) = \int_{-\infty}^\infty f(x, 2x - z) \mathrm{d}x = \int_{\frac{z}{2}}^1 1 \mathrm{dx} = 1 - \frac{z}{2}
+$$
+
+\subsection{c)} 
+
+The conditional probability is 
+$$
+P(Y < \frac{1}{2}|X < \frac{1}{2}) = \frac{P(Y < \frac{1}{2}, X < \frac{1}{2})}{P(X < \frac{1}{2})} = \frac{\int_{0}^{\frac{1}{2}} \int_{0}^{2x} 1 \mathrm{dy} \mathrm{dx}}{\int_{0}^{\frac{1}{2}} 2x \mathrm{dx}} = \frac{\int_{0}^{\frac{1}{2}} 2x \mathrm{dx}}{\int_{0}^{\frac{1}{2}} 2x \mathrm{dx}} = 1
+$$
 
 \section{Page 114, Problem 72}
 
+$$
+F(x, y) = P(X \leq x, Y \leq y) = P(X \leq x) - P(X > x, Y \leq y)
+$$
+
+We compute them separately. For $P(X \leq x)$, we have
+$$
+P(X \leq x) = P(X_1 \leq x, X_2 \leq x, \ldots, X_n \leq x) = P(X_1 \leq x)P(X_2 \leq x) \cdots P(X_n \leq x) = F(x)^n
+$$
+
+For $P(X > x, Y \leq y)$, we have
+$$
+P(X > x, Y \leq y) = [P(x < X_i < y)]^n = [F(y) - F(x)]^n
+$$
+
+Thus we have
+$$
+F() = F(x)^n - [F(y) - F(x)]^n, x \leq y
+$$
+
 \section{Supplementary Problem 3.1} 
 
+The joint frequency function of $X$ and $Y$ is
+$$
+P(X = i, Y = j) = \frac{1}{6}, X \ne Y, i, j = 1, 2, 3
+$$
+
+The marginal frequency function of $X$ is
+$$
+P(X = 1) = P(X = 2) = P(X = 3) = \frac{1}{3}
+$$
+
+The marginal frequency function of $Y$ is
+$$
+P(Y = 1) = P(Y = 2) = P(Y = 3) = \frac{1}{3}
+$$
+
+The joint frequency function of $X$ and $Z$ is 
+\begin{align*} 
+P(X = 3, Z = 3) = \frac{1}{3} \\ 
+P(X = 2, Z = 3) = \frac{1}{6} \\
+P(X = 2, Z = 2) = \frac{1}{6} \\ 
+P(X = 1, Z = 3) = \frac{1}{6} \\ 
+P(X = 1, Z = 2) = \frac{1}{6} \\
+\end{align*} 
+
+The marginal frequency function of $Z$ is
+\begin{align*}
+P(Z = 3) = \frac{1}{2} \\
+P(Z = 2) = \frac{1}{3} \\
+P(Z = 1) = \frac{1}{6}
+\end{align*}
+
+The marginal frequency function of $X$ is
+$$
+P(X = 1) = P(X = 2) = P(X = 3) = \frac{1}{3}
+$$
+  
 \section{Supplementary Problem 3.2} 
+
+$$
+P(Z \leq z) = P(\min(X,Y) \leq z) = 1 - P(\min(X,Y) > z) = 1 - P(X > z, Y > z) = 1 - P(X > z)P(Y > z) = 1 - (1 - F(z))^2
+$$
+
+Thus the density function of $Z$ is
+$$
+f(z) = 2(1 - F(z))f(z)
+$$
+
+As $F(z) = \Phi(z)$, we have 
+$$
+f(z) = 2(1 - \Phi(z))\phi(z)
+$$
 
 \end{document}
