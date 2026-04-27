@@ -5,6 +5,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
@@ -90,7 +92,7 @@ $$
 
 Thus the density function is
 $$
-f(x) = \begin{cases}
+f(x,y) = \begin{cases}
 \frac{3}{4} & , (x,y) \in D \\ 
 0 & , \text{otherwise} \\
 \end{cases}
@@ -103,7 +105,7 @@ $$
 which is 
 $$
 f_X(x) = \begin{cases} 
-\frac{3}{4(1-x^2)}&, -1 < x < 1\\
+\frac{3(1-x^2)}{4}&, -1 < x < 1\\
 0&, \text{otherwise}
 \end{cases}
 $$
@@ -133,7 +135,7 @@ $$
 The conditional density function of $Y$ given $X = x$ is
 $$
 f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)} = \begin{cases}
-\frac{1-x^2}{1-x^2} = 1 &, 0 < y < 1-x^2\\
+\frac{1}{1-x^2} &, 0 < y < 1-x^2\\
 0 &, \text{otherwise}
 \end{cases}
 $$
@@ -184,7 +186,7 @@ $$
 
 Thus we have
 $$
-\frac{c}{2} \int_{0}^{2\pi} \int_{0}^1 \sqrt{1 - t} \mathrm{d}r \mathrm{d}\theta = c\pi (-\frac{2}{3}(1 - t)^{\frac{3}{2}} \big|_{0}^1)= \frac{2c\pi}{3} =  1
+\frac{c}{2} \int_{0}^{2\pi} \int_{0}^1 \sqrt{1 - t} \mathrm{d}t \mathrm{d}\theta = c\pi (-\frac{2}{3}(1 - t)^{\frac{3}{2}} \big|_{0}^1)= \frac{2c\pi}{3} =  1
 $$
 
 Then $c = \frac{3}{2\pi}$.
@@ -192,13 +194,33 @@ Then $c = \frac{3}{2\pi}$.
 \subsection{b)} 
 
 We sketch the density function as follows:
-% placeholder for the sketch
+
+\begin{center}
+\begin{tikzpicture}[scale=1.8]
+    % Base circle (unit disk)
+    \draw[thick] (0,0) circle (1);
+    \draw[dashed, gray] (-1,0) arc (180:360:1 and 0.35);
+    \draw[thick] (1,0) arc (0:180:1 and 0.35);
+
+    % Hemisphere top outline
+    \draw[thick, domain=-1:1, samples=50] plot ({\x}, {0.6*sqrt(1-\x*\x)});
+
+    % Some meridian lines for 3D effect
+    \foreach \x in {-0.6,-0.3,0,0.3,0.6} {
+        \draw[gray!40, thin] (\x,0) -- (\x, {0.6*sqrt(1-\x*\x)});
+    }
+
+    % Peak label
+    \node[above] at (0,0.65) {$\frac{3}{2\pi}$};
+    \node[below] at (0,-0.6) {$x^2+y^2\leq 1$};
+\end{tikzpicture}
+\end{center}
 
 \subsection{c)} 
 
 The $P(X^2 + Y^2 \leq \frac{1}{2})$ is 
 $$
-\frac{c}{2} \int_{0}^{2\pi} \int_{0}^\frac{1}{2} \sqrt{1 - t} \mathrm{d}r \mathrm{d}\theta = (-(1 - t)^{\frac{3}{2}} \big|_{0}^\frac{1}{2}) = 1 - \left(\frac{1}{2}\right)^{\frac{3}{2}} = 1 - \frac{\sqrt{2}}{4}
+\frac{3}{4\pi} \int_{0}^{2\pi} \int_{0}^\frac{1}{2} \sqrt{1 - t} \mathrm{d}t \mathrm{d}\theta = (-(1 - t)^{\frac{3}{2}} \big|_{0}^\frac{1}{2}) = 1 - \left(\frac{1}{2}\right)^{\frac{3}{2}} = 1 - \frac{\sqrt{2}}{4}
 $$
 
 
@@ -303,36 +325,55 @@ $$
 
 \section{Page 112, Problem 43}
 
-Given that $U_1, U_2 \sim U(0, 1)$
-
-The joint density function of $U_1$ and $U_2$ is
+Given that $U_1, U_2 \sim U(0, 1)$ independently, the density function of $S = U_1 + U_2$ can be found by the convolution formula:
 $$
-f(x,y) = \begin{cases}
-1 &, 0 < x < 1, 0 < y < 1\\
-0 &, \text{otherwise}
-\end{cases}
+f_S(s) = \int_{-\infty}^{\infty} f_{U_1}(x) f_{U_2}(s - x) \, \mathrm{d}x
 $$
-
+Since $f_{U_1}(x) = 1$ for $0 < x < 1$ and $f_{U_2}(s-x) = 1$ for $s-1 < x < s$, the integrand is non-zero only when
 $$
-P(U_1 + U_2 \leq x) = \iint_{u_1 + u_2 \leq x} f(u_1, u_2) \mathrm{d}u_1 \mathrm{d}u_2
+\max(0, s-1) < x < \min(1, s)
 $$
+We consider the following cases.
 
-Thus 
-
-\begin{align*} 
-P(U_1 + U_2 \leq x) &= \int_{0}^x \int_{0}^{x-u_1} 1 \mathrm{d}u_2 \mathrm{d}u_1\\
-&= \int_{0}^x (x-u_1) \mathrm{d}u_1\\
-&= \int_{0}^x x \mathrm{d}u_1 - \int_{0}^x u_1 \mathrm{d}u_1\\
-&= x^2 - \frac{x^2}{2} = \frac{x^2}{2}
+\textbf{Case 1:} $0 \leq s \leq 1$. Then $\max(0, s-1) = 0$ and $\min(1, s) = s$, so
+\begin{align*}
+f_S(s) &= \int_{0}^{s} 1 \cdot 1 \, \mathrm{d}x = s
 \end{align*}
 
-Thus the density function of $F_S(x)$ will be 
+\textbf{Case 2:} $1 < s \leq 2$. Then $\max(0, s-1) = s-1$ and $\min(1, s) = 1$, so
+\begin{align*}
+f_S(s) &= \int_{s-1}^{1} 1 \cdot 1 \, \mathrm{d}x = 1 - (s-1) = 2 - s
+\end{align*}
+
+\textbf{Case 3:} $s < 0$ or $s > 2$. The intervals do not overlap, so $f_S(s) = 0$.
+
+Thus the density function of $S$ is
 $$
-f(x) = \begin{cases} 
-x , \quad 0 < x < 2 \\ 
-0 , \quad \text{otherwise} 
+f_S(s) = \begin{cases}
+s &, \quad 0 \leq s \leq 1 \\
+2 - s &, \quad 1 < s \leq 2 \\
+0 &, \quad \text{otherwise}
 \end{cases}
 $$
+
+We sketch the density function as follows:
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+    \draw[->] (-0.3,0) -- (2.3,0) node[right] {$s$};
+    \draw[->] (0,-0.2) -- (0,1.2) node[above] {$f_S(s)$};
+
+    % Triangle
+    \draw[thick] (0,0) -- (1,1) -- (2,0) -- cycle;
+
+    % Labels
+    \node[below] at (0,0) {$0$};
+    \node[below] at (1,0) {$1$};
+    \node[below] at (2,0) {$2$};
+    \node[left] at (0,1) {$1$};
+    \node[above right] at (1,1) {peak at $s=1$};
+\end{tikzpicture}
+\end{center}
 
 \section{Page 112, Problem 44}
 
@@ -409,50 +450,30 @@ $$
 
 For $Y > 0$, then $P(Z \leq z) = P(X \leq zy)$, thus
 $$
-f_Z(z) = \frac{1}{y} f_X(zy) = \int_{-\infty}^\infty \frac{1}{y} f(zy, y) \mathrm{d}y
+f_Z(z) = y f_X(zy) = \int_{-\infty}^\infty y f(zy, y) \mathrm{d}y
 $$
 For $Y < 0$, then $P(Z \leq z) = P(X \geq zy)$, thus
 $$
-f_Z(z) = -\frac{1}{y} f_X(zy) = -\int_{-\infty}^\infty \frac{1}{y} f(zy, y) \mathrm{d}y
+f_Z(z) = -y f_X(zy) = -\int_{-\infty}^\infty y f(zy, y) \mathrm{d}y
 $$
 
 Thus the density function of $Z$ is
 $$
-f_Z(z) = \int_{-\infty}^\infty f(zy, y) \frac{1}{|y|} \mathrm{d}y
+f_Z(z) = \int_{-\infty}^\infty f(zy, y) |y| \mathrm{d}y
 $$
 
-Notice that $X$ and $Y$ are independent where $X, Y \sim U(a, b)$, thus we have
-$$
-f_Z(z) = \int_{-\infty}^\infty f_X(zy)f_Y(y) \frac{1}{|y|} \mathrm{d}y
-$$
+Notice that $X$ and $Y$ are independent where $X \sim U(a, b), Y \sim U(c, d)$, but discussing $a, b, c, d$ will be too complex, since for simplicity we only consider the case when $a = c =0, b = d = 1$. Then we have
 
-Then the density function of $Z$ is
-\begin{align*} 
-f_Z(z) &= \int_{a}^b \frac{1}{b-a} \cdot \frac{1}{b-a} \cdot \frac{1}{|y|} \mathrm{d}y = \frac{1}{(b-a)^2} \int_{a}^b \frac{1}{|y|} \mathrm{d}y \\ 
-&= \frac{1}{(b - a)^2} \int_{a}^b \frac{1}{|y|} \mathrm{d}y
-\end{align*}
+$$
+f_Z(z) = \begin{cases} 
+\frac{1}{2}, & 0 < z < 1\\
+\frac{1}{2z^2}, & z \geq 1\\
+0, & \text{otherwise}
+\end{cases}
+$$ 
 
-We discuss case1: $a > 0$, case2: $a < 0, b > 0$, case3: $b < 0$.
 
-For case1, we have
-$$
-f_Z(z) = \frac{1}{(b-a)^2} \int_{a}^b \frac{1}{y} \mathrm{d}y = \frac{1}{(b-a)^2} (\ln b - \ln a) = \frac{\ln b - \ln a}{(b-a)^2}
-$$
 
-For case2, we have
-$$
-f_Z(z) = \frac{1}{(b-a)^2} \int_{a}^0 \frac{1}{-y} \mathrm{d}y + \frac{1}{(b-a)^2} \int_{0}^b \frac{1}{y} \mathrm{d}y = \frac{1}{(b-a)^2} (\ln b - \ln (-a)) = \frac{\ln b - \ln (-a)}{(b-a)^2}
-$$
-
-For case3, we have
-$$
-f_Z(z) = \frac{1}{(b-a)^2} \int_{a}^b \frac{1}{-y} \mathrm{d}y = \frac{1}{(b-a)^2} (\ln (-a) - \ln (-b)) = \frac{\ln (-a) - \ln (-b)}{(b-a)^2}
-$$
-
-Thus we can write them as: 
-$$
-f_Z(z) = \frac{\ln|a| - \ln|b|}{(b - a)^2}
-$$
 
 
 \section{Page 112, Problem 57}
@@ -600,19 +621,22 @@ $$
 \subsection{c)} 
 
 The conditional probability is 
-$$
-P(Y < \frac{1}{2}|X < \frac{1}{2}) = \frac{P(Y < \frac{1}{2}, X < \frac{1}{2})}{P(X < \frac{1}{2})} = \frac{\int_{0}^{\frac{1}{2}} \int_{0}^{2x} 1 \mathrm{dy} \mathrm{dx}}{\int_{0}^{\frac{1}{2}} 2x \mathrm{dx}} = \frac{\int_{0}^{\frac{1}{2}} 2x \mathrm{dx}}{\int_{0}^{\frac{1}{2}} 2x \mathrm{dx}} = 1
-$$
+\begin{align*}
+P(Y < \frac{1}{2}|X < \frac{1}{2}) &= \frac{P(Y < \frac{1}{2}, X \leq \frac{1}{4}) + P(Y < \frac{1}{2},  \frac{1}{4} < X < \frac{1}{2})}{P(X < \frac{1}{2})} \\ 
+&= \frac{\int_{0}^\frac{1}{4} \int_{0}^{2x} \mathrm{d}y \mathrm{d}x + \int_{\frac{1}{4}}^{\frac{1}{2}} \int_{0}^\frac{1}{2} \mathrm{d}y\mathrm{d}x}{\int_{0}^{\frac{1}{2}} 2x \mathrm{d}x} \\ 
+&= \frac{\frac{1}{16} + \frac{1}{8}}{\frac{1}{4}}  \\ 
+&= \frac{3}{4}
+\end{align*}
 
 \section{Page 114, Problem 72}
 
 $$
-F(x, y) = P(X \leq x, Y \leq y) = P(X \leq x) - P(X > x, Y \leq y)
+F(x, y) = P(X \leq x, Y \leq y) = P(X \leq y) - P(X > x, Y \leq y)
 $$
 
-We compute them separately. For $P(X \leq x)$, we have
+We compute them separately. For $P(X \leq y)$, we have
 $$
-P(X \leq x) = P(X_1 \leq x, X_2 \leq x, \ldots, X_n \leq x) = P(X_1 \leq x)P(X_2 \leq x) \cdots P(X_n \leq x) = F(x)^n
+P(X \leq y) = P(X_1 \leq y, X_2 \leq y, \ldots, X_n \leq y) = P(X_1 \leq y)P(X_2 \leq y) \cdots P(X_n \leq y) = F(y)^n
 $$
 
 For $P(X > x, Y \leq y)$, we have
@@ -622,7 +646,7 @@ $$
 
 Thus we have
 $$
-F() = F(x)^n - [F(y) - F(x)]^n, x \leq y
+F(x, y) = F(y)^n - [F(y) - F(x)]^n, x \leq y
 $$
 
 \section{Supplementary Problem 3.1} 
@@ -653,9 +677,9 @@ P(X = 1, Z = 2) = \frac{1}{6} \\
 
 The marginal frequency function of $Z$ is
 \begin{align*}
-P(Z = 3) = \frac{1}{2} \\
+P(Z = 3) = \frac{2}{3} \\
 P(Z = 2) = \frac{1}{3} \\
-P(Z = 1) = \frac{1}{6}
+P(Z = 1) = 0
 \end{align*}
 
 The marginal frequency function of $X$ is
@@ -665,16 +689,15 @@ $$
   
 \section{Supplementary Problem 3.2} 
 
-$$
-P(Z \leq z) = P(\min(X,Y) \leq z) = 1 - P(\min(X,Y) > z) = 1 - P(X > z, Y > z) = 1 - P(X > z)P(Y > z) = 1 - (1 - F(z))^2
-$$
+\begin{align*}
+P(Z \leq z) &= P(\min(X,Y) \leq z) \\ 
+&= 1 - P(\min(X,Y) > z)  \\ 
+&= 1 - P(X > z, Y > z) \\ 
+&= 1 - P(X > z)P(Y > z)  \\ 
+&= 1 - (1 - F_X(z))(1 - F_Y(z))
+\end{align*}
 
-Thus the density function of $Z$ is
-$$
-f(z) = 2(1 - F(z))f(z)
-$$
-
-As $F(z) = \Phi(z)$, we have 
+As $F_X(z)= F_Y(z) = \Phi(z)$, we have 
 $$
 f(z) = 2(1 - \Phi(z))\phi(z)
 $$
