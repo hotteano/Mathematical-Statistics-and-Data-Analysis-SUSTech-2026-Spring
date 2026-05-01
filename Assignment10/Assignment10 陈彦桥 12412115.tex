@@ -1,0 +1,194 @@
+\documentclass[a4paper, UTF-8]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\theoremstyle{plain}
+\newtheorem{theorem}{\indent Theorem}[section]
+\newtheorem{lemma}[theorem]{\indent Lemma}
+\newtheorem{assumption}{\indent Assumption}[section]
+\newtheorem{note}[theorem]{\indent Notation}
+\newtheorem{proposition}[theorem]{\indent Proposition}
+\newtheorem{corollary}[theorem]{\indent Corollary}
+\newtheorem{definition}{\indent Definition}[section]
+\newtheorem{example}{\indent Example}[section]
+\newtheorem{remark}{\indent Remark}[section]
+\newenvironment{solution}{\begin{proof}[\indent\bf Solution]}{\end{proof}}
+\renewcommand{\proofname}{\indent\bf Proof}
+
+\begin{document}
+
+\title{\textbf{Assignment 10}}
+
+\author{Yanqiao Chen\\ 
+  Department of Computer Science and Engineering\\
+  Southern University of Science and Technology\\
+  \texttt{12412115@mail.sustech.edu.cn}
+  }
+
+
+\maketitle
+
+\section{Page 167, Problem 6} 
+
+\subsection{a)} 
+
+The expectation of $X$ is 
+$$
+E(X) = \int_{0}^1 x \cdot 2x \mathrm{d}x = \frac{2}{3}.
+$$
+
+\subsection{b)} 
+
+The probability mass function of $Y = X^2, X > 0$ is 
+$$
+P(Y \leq y) = P(X^2 \leq y) = P(X \leq \sqrt{y}) = F_X(\sqrt{y}) = (\sqrt{y})^2 = y
+$$
+
+Thus the density function of $Y$ is
+$$
+f_Y(y) = \frac{\mathrm{d}}{\mathrm{d}y} P(Y \leq y) = 1, y \in (0, 1).
+$$
+
+The expectation of $Y$ is
+$$
+E(Y) = \int_{0}^1 y \cdot 1 \mathrm{d}y = \frac{1}{2}.
+$$
+
+\subsection{c)}
+
+$E(Y) = \int_{-\infty}^\infty x^2 f(x) \mathrm{d} x = \int_{0}^1 2x^3\mathrm{d}x = \frac{1}{2}$ 
+
+which is exactly the same as the result in b).
+
+\subsection{d)}
+
+We directly calculate the variance of $X$ as follows:
+$$
+D(X) = \int_{0}^1 (x - \frac{2}{3})^2 \cdot 2x \mathrm{d}x = \frac{1}{18}.
+$$
+
+We use the formula $D(X) = E(X^2) - (E(X))^2$ to calculate the variance of $X$ as follows:
+$$
+D(X) = \int_{0}^1 2x^3 \mathrm{d}x - (\frac{2}{3})^2 = \frac{1}{18}.
+$$
+
+which are the same.
+
+\section{Page 167, Problem 15}
+
+Let $X$ and $Y$ be the gain from buying lottery A twice and buying from both lotteries once, respectively. Let the payoff be $K$, the possible numbers be $n$. Then we have
+$$
+E(X) = \frac{\binom{n-1}{1}}{\binom{n}{2}} \cdot K = \frac{n - 1}{\frac{n!}{2!(n - 2)!}} \cdot K = \frac{2K}{n}
+$$
+
+$$
+E(Y) = E(X_1) + E(X_2) = \frac{K}{n} + \frac{K}{n} = \frac{2K}{n}. 
+$$
+
+Thus, suppose that the cost of buying lottery A twice and buying from both lotteries once are the same, we obtain $\frac{2K}{n} - 2c$, then the expected gain of these two strategies are the same.
+
+\section{Page 167, Problem 21}
+
+The area of the square is $X^2$ with $X \sim U(0, 1)$. Thus, the expectation of the area is
+$$
+E(X^2) = \int_{0}^1 x^2 \cdot 1 \mathrm{d}x = \frac{1}{3}.
+$$
+
+\section{Page 167, Problem 30}
+
+$X \sim P(\lambda)$, thus 
+$$
+E(\frac{1}{X + 1}) = \sum_{k=0}^\infty \frac{1}{k+1} \cdot \frac{\lambda^k e^{-\lambda}}{k!} = \frac{1 - e^{-\lambda}}{\lambda}.
+$$
+
+\section{Page 167, Problem 31}
+
+$X \sim U(1,2)$, then 
+$$
+E(\frac{1}{X}) = \int_{1}^2 \frac{1}{x} \mathrm{d}x = \ln 2.
+$$
+
+And 
+$$
+E(X) = \int_{1}^2 x \mathrm{d}x = \frac{3}{2}.
+$$
+
+where $E(\frac{1}{X}) \ne \frac{1}{E(X)}$.
+
+\section{Supplementary Problem 1}
+
+\subsection{1)} 
+
+The expectation of $Y = 2X$ is 
+$$
+E(Y) = \int_{0}^\infty 2x \cdot e^{-x} \mathrm{d}x = 2.
+$$
+
+\subsection{2)} 
+
+The expectation of $Y = e^{-2x}$ is
+$$
+E(Y) = \int_{0}^\infty e^{-2x} \cdot e^{-x} \mathrm{d}x = \frac{1}{3}.
+$$
+
+\section{Supplementary Problem 2}
+
+\subsection{a) $E(X)$} 
+
+The marginal density function of $X$ is
+$$
+f_X(x) = \int_{0}^x 12y^2 \mathrm{d}y = 4x^3, x \in (0, 1).
+$$
+
+The expectation of $X$ is
+$$
+E(X) = \int_{0}^1 x \cdot 4x^3 \mathrm{d}x = \frac{4}{5}.
+$$
+
+\subsection{b) $E(Y)$} 
+
+The marginal density function of $Y$ is
+$$
+f_Y(y) = \int_{y}^1 12y^2 \mathrm{d}x = 12y^2(1-y), y \in (0, 1).
+$$
+
+The expectation of $Y$ is
+$$
+E(Y) = \int_{0}^1 y \cdot 12y^2(1-y) \mathrm{d}y = \frac{3}{5}.
+$$
+
+\subsection{c) $E(XY)$} 
+
+The expectation of $XY$ is
+\begin{align*}
+E(XY) & = \int_{0}^1 \int_{0}^x 12x y^3 \mathrm{d}y \mathrm{d}x \\
+      & = \int_{0}^1 3x^5 \mathrm{d}x \\
+      & = \frac{1}{2}.
+\end{align*}
+
+\subsection{d) $E(X^2 + Y^2)$} 
+
+The expectation of $X^2 + Y^2$ is
+$$
+E(X^2+Y^2) = \int_{0}^1 \int_{0}^x 12(x^2 + y^2) y^2 \, \mathrm{d}y \mathrm{d}x
+           = \int_{0}^1 12\left[\frac{x^2 y^3}{3} + \frac{y^5}{5}\right]_{0}^x \, \mathrm{d}x
+           = \int_{0}^1 \frac{32x^5}{5} \, \mathrm{d}x
+           = \frac{16}{15}.
+$$
+
+\end{document}
